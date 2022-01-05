@@ -1,0 +1,88 @@
+%!TEX encoding = UTF-8 Unicode
+\ProvidesPackage{freitag-inlay}
+
+% ==========
+% Dimensions
+% ==========
+
+\newcommand{\width}{115mm}
+\newcommand{\height}{182mm}
+\newcommand{\margin}{5mm}
+\newcommand{\margininner}{10mm}
+\newcommand{\margintext}{4mm}
+
+% ==========
+% Page setup
+% ----------
+
+\RequirePackage[
+  papersize={\width,\height},
+  cropmarks,
+  croplength=3mm,
+  cropgap=2mm,
+  nobleedclip,
+  topmargin=\margin,
+  rightmargin=\margin,
+  botmargin=\margin,
+  leftmargin=\margininner,
+]{zwpagelayout}
+
+\setlength\parindent{0pt}
+
+% =====
+% Fonts
+% -----
+\RequirePackage{ifxetex}
+
+\ifxetex
+  \RequirePackage{fontspec}
+  \RequirePackage{xltxtra}
+  \RequirePackage{xunicode}
+\else
+  \RequirePackage[utf8]{inputenc}
+  \RequirePackage[T1]{fontenc}
+\fi
+
+% =======
+% Options
+% -------
+\newif\if@optiongrid\@optiongridfalse
+\DeclareOption{grid}{\@optiongridtrue}
+\ProcessOptions\relax
+
+% ===============
+% Background grid
+% ===============
+
+\newcommand{\pagegrid}{%
+  \begin{tikzpicture}[overlay]
+  \draw [step=5mm] (0,0) grid (\width,\height);
+  \checkoddpage
+  \ifoddpage
+    \draw [draw=blue] (\margininner,\margin) -- (\margininner,\height-\margin);
+    \draw [draw=blue,dashed] (\margininner+\margintext,\margin) -- (\margininner+\margintext,\height-\margin);
+    \draw [draw=blue] (\width-\margin,\margin) -- (\width-\margin,\height-\margin);
+    \draw [draw=blue] (\margininner,\margin) -- (\width-\margin,\margin);
+    \draw [draw=blue] (\margininner,\height-\margin) -- (\width-\margin,\height-\margin);
+  \else
+    \draw [draw=blue] (\width-\margininner,\margin) -- (\width-\margininner,\height-\margin);
+    \draw [draw=blue,dashed] (\margin+\margintext,\margin) -- (\margin+\margintext,\height-\margin);
+    \draw [draw=blue] (\margin,\margin) -- (\margin,\height-\margin);
+    \draw [draw=blue] (\margin,\margin) -- (\width-\margininner,\margin);
+    \draw [draw=blue] (\margin,\height-\margin) -- (\width-\margininner,\height-\margin);
+  \fi
+  \end{tikzpicture}
+}
+
+\if@optiongrid
+  \RequirePackage[
+    angle=0.0,
+    scale=1.0,
+    position={current page.south west},
+  ]{background}
+  \RequirePackage[strict]{changepage}
+  \RequirePackage{tikz}
+  \usetikzlibrary{calc}
+
+  \SetBgContents{\pagegrid}
+\fi
