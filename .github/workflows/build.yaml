@@ -16,7 +16,8 @@ jobs:
         with:
           root_file: dotted.tex
           latexmk_use_xelatex: true
+          post_compile: pdfjam --vanilla --noautoscale true --angle 90 --nup 2x1 --suffix '2x1' --booklet true  dotted.pdf
       - uses: actions/upload-artifact@v2
         with:
           name: Dotted
-          path: dotted.pdf
+          path: dotted-2x1.pdf
