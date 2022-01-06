@@ -16,8 +16,14 @@ jobs:
         with:
           root_file: dotted.tex
           latexmk_use_xelatex: true
-          post_compile: pdfjam --vanilla --noautoscale true --angle 90 --nup 2x1 --suffix '2x1' --booklet true  dotted.pdf
+          post_compile: pdfjam --vanilla --noautoscale true --angle 90 --nup 2x1 --suffix 'booklet' --booklet true  dotted.pdf
+      - name: Append licence
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: license.tex
+          latexmk_use_xelatex: true
+          post_compile: pdfjam --vanilla --noautoscale true --outfile dotted.pdf dotted-booklet.pdf license.pdf
       - uses: actions/upload-artifact@v2
         with:
           name: Dotted
-          path: dotted-2x1.pdf
+          path: dotted.pdf
