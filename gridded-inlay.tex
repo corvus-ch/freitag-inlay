@@ -1,0 +1,21 @@
+\documentclass[twoside]{scrartcl}
+
+\usepackage{freitag}
+\usepackage{tikz}
+\usepackage{color}
+
+\newcommand{\griddedpage}{%
+  \begin{tikzpicture}[gray, very thin]
+    \draw [xstep=10mm,ystep=4mm] (0,0) grid (\width-\margin-\margininner,\height-\margin-\margin);
+    \draw [dashed] (\margintext,0) -- (\margintext,\height-\margin-\margin);
+  \end{tikzpicture}
+}
+
+\begin{document}
+\pagestyle{empty}
+\enlargethispage{\margin}
+\griddedpage
+\griddedpage
+\griddedpage
+\griddedpage
+\end{document}
