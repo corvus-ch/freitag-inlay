@@ -1,0 +1,68 @@
+name: Build PDF documents
+on:
+  workflow_call:
+  pull_request:
+    branches:
+      - trunk
+  push:
+    tags:
+      - v*
+
+jobs:
+  build_pdf:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        name:
+          - dotted
+          - gridded
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v2
+
+      - name: Compile LaTeX documents
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: ${{ matrix.name }}.tex
+          latexmk_use_xelatex: true
+          post_compile: pdfjam --vanilla --noautoscale true --angle 90 --nup 2x1 --suffix 'booklet' --booklet true ${{ matrix.name }}.pdf
+      - name: Append licence
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: license.tex
+          latexmk_use_xelatex: true
+          post_compile: pdfjam --vanilla --noautoscale true --outfile ${{ matrix.name }}.pdf ${{ matrix.name }}-booklet.pdf license.pdf
+
+      - uses: actions/upload-artifact@v2
+        with:
+          path: ${{ matrix.name }}.pdf
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build_pdf
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: "0"
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v2
+
+      - name: Build changelog
+        id: build_changelog
+        uses: mikepenz/release-changelog-builder-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create Release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "artifact/*"
+          body: ${{ steps.build_changelog.outputs.changelog }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
