@@ -7,23 +7,19 @@ SHELL := bash
 .SUFFIXES:
 
 # Internal variables
-build_cmd := latexmk -pdf -pdflatex="xelatex -interaction=nonstopmode" -use-make
+build_cmd := latexmk -pdf -pdflatex="xelatex -shell-escape -interaction=nonstopmode" -use-make
 clean_cmd := latexmk -c
 
 # Rules and targets
 .PHONY: all
-all: dotted-template.pdf gridded-template.pdf
+all: dotted.pdf gridded.pdf
 
-.SUFFIXES: -template.pdf
-%-template.pdf: %-2x1.pdf license.pdf
-	pdfjam --vanilla --noautoscale true --outfile $*-template.pdf $^
-
-.SUFFIXES: -2x1.pdf
-%-2x1.pdf: %.pdf
-	pdfjam --vanilla --noautoscale true --angle 90 --nup 2x1 --suffix '2x1' --booklet true $<
+.SUFFIXES: -inlay.pdf
+%-inlay.pdf: %-inlay.tex
+	$(build_cmd) $<
 
 .SUFFIXES: .pdf
-%.pdf: %.tex freitag-inlay.sty
+%.pdf: %.tex %-inlay.pdf inlay.sty
 	$(build_cmd) $<
 
 .PHONY: clean

@@ -1,0 +1,41 @@
+%!TEX encoding = UTF-8 Unicode
+\ProvidesPackage{inlay}
+
+% Fonts
+% -----
+\RequirePackage{ifxetex}
+
+\ifxetex
+  \RequirePackage{fontspec}
+  \RequirePackage{xltxtra}
+  \RequirePackage{xunicode}
+\else
+  \RequirePackage[utf8]{inputenc}
+  \RequirePackage[T1]{fontenc}
+\fi
+
+% Titlepage
+% ---------
+\RequirePackage{pdfpages}
+\RequirePackage{gitinfo2}
+\RequirePackage[
+  type={CC},
+  modifier={by-sa},
+  version={4.0},
+]{doclicense}
+
+\newcommand{\inlay}[2]{%
+  \begin{titlepage}
+    \subject{Freitag Agenda Inlay}
+    \title{#1}
+    \author{Christian Häusler}
+    \date{\gitDescribe~\gitAuthorIsoDate}
+    \publishers{https://github.com/corvus-ch/freitag-inlay}
+    \clearpage
+    \maketitle
+    \thispagestyle{empty}
+    \vfill
+    \doclicenseThis
+  \end{titlepage}
+  \includepdf[angle=90,nup=2x1,booklet=true,pages=-]{#2}
+}
