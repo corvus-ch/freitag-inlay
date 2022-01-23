@@ -3,6 +3,18 @@
 \usepackage{freitag}
 \usepackage{tikz}
 \usepackage{color}
+\usepackage{calc}
+
+\usetikzlibrary{shapes.multipart}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\newcommand{\fromright}[1]{\width-\margin-\margininner-#1}
+\newcommand{\fromtop}[1]{\height-\margin-\margin-#1}
+\newlength{\rowhight}
+\setlength{\rowhight}{7.5mm}
+
+\definecolor{lgray}{gray}{0.9}
 
 \newcommand{\dottedpage}{%
   \begin{tikzpicture}[
@@ -10,25 +22,34 @@
     ultra thin,
     field/.style={
       anchor=south west,
-      minimum height=8mm,
+      minimum height=\rowhight,
       rectangle,
     },
     time/.style={field, minimum width=17.5mm, black},
     report/.style={field, minimum width=11mm, black!10},
+    title/.style={
+      anchor=north west,
+      minimum width=\fromright{0},
+      text width=\fromright{1em},
+      rectangle split,
+      rectangle split parts=2,
+      black,
+    },
   ]
 
+    \node at (0,\fromtop{0}) [title] {\Huge\textcolor{lgray}{2022}\,-\,\textcolor{lgray}{01}\,-\,\textcolor{lgray}{01}\hfill\textcolor{lgray}{1X}\,/\,\textcolor{lgray}{AA}\,-\,\textcolor{lgray}{000}\nodepart{second}\huge\textcolor{lgray}{0000}\,.\,\textcolor{lgray}{0000} MHz \hfill \textcolor{lgray}{SSB} \hfill \textcolor{lgray}{1000}\,W};
 
     \foreach \r in {0,...,9} {
-      \draw [loosely dashed] (0,\r*16mm) -- (\width-\margin-\margininner,\r*16mm);
-      \draw [loosely dotted] (17.5mm,\r*16mm+8mm) -- (\width-\margin-\margininner,\r*16mm+8mm);
-      \node at (0,\r*16mm+8mm) [time] {:};
-      \node at (\width-\margin-\margininner-22mm,\r*16mm+8mm) [report] {599};
-      \node at (\width-\margin-\margininner-11mm,\r*16mm+8mm) [report] {599};
-     }
+      \draw [loosely dashed] (0,\r*2\rowhight) -- (\fromright{0},\r*2\rowhight);
+      \draw [loosely dotted] (17.5mm,\r*2\rowhight+\rowhight) -- (\fromright{0},\r*2\rowhight+\rowhight);
+      \node at (0,\r*2\rowhight+\rowhight) [time] {:};
+      \node at (\fromright{22mm},\r*2\rowhight+\rowhight) [report] {599};
+      \node at (\fromright{11mm},\r*2\rowhight+\rowhight) [report] {599};
+    }
 
-    \draw [loosely dashed] (0,0) rectangle (\width-\margin-\margininner,\height-\margin-\margin);
-    \draw [loosely dashed] (0,10*16mm) -- (\width-\margin-\margininner,10*16mm);
-    \draw [loosely dotted] (17.5mm,0) -- (17.5mm,10*16mm);
+    \draw [loosely dashed] (0,0) rectangle (\fromright{0},\fromtop{0});
+    \draw [loosely dashed] (0,20\rowhight) -- (\fromright{0},20\rowhight);
+    \draw [loosely dotted] (17.5mm,0) -- (17.5mm,20\rowhight);
   \end{tikzpicture}
 }
 
