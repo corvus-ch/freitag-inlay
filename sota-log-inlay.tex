@@ -1,0 +1,62 @@
+\documentclass[twoside]{scrartcl}
+
+\usepackage{freitag}
+\usepackage{tikz}
+\usepackage{color}
+\usepackage{calc}
+
+\usetikzlibrary{shapes.multipart}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\newcommand{\fromright}[1]{\width-\margin-\margininner-#1}
+\newcommand{\fromtop}[1]{\height-\margin-\margin-#1}
+\newlength{\rowhight}
+\setlength{\rowhight}{7.5mm}
+
+\definecolor{lgray}{gray}{0.9}
+
+\newcommand{\dottedpage}{%
+  \begin{tikzpicture}[
+    gray,
+    ultra thin,
+    field/.style={
+      anchor=south west,
+      minimum height=\rowhight,
+      rectangle,
+    },
+    time/.style={field, minimum width=17.5mm, black},
+    report/.style={field, minimum width=11mm, black!10},
+    title/.style={
+      anchor=north west,
+      minimum width=\fromright{0},
+      text width=\fromright{1em},
+      rectangle split,
+      rectangle split parts=2,
+      black,
+    },
+  ]
+
+    \node at (0,\fromtop{0}) [title] {\Huge\textcolor{lgray}{2022}\,-\,\textcolor{lgray}{01}\,-\,\textcolor{lgray}{01}\hfill\textcolor{lgray}{1X}\,/\,\textcolor{lgray}{AA}\,-\,\textcolor{lgray}{000}\nodepart{second}\Large\textcolor{lgray}{0000}\,.\,\textcolor{lgray}{0000} MHz \hfill \textcolor{lgray}{SSB} \hfill \textcolor{lgray}{1000}\,W};
+
+    \foreach \r in {0,...,9} {
+      \draw [loosely dashed] (0,\r*2\rowhight) -- (\fromright{0},\r*2\rowhight);
+      \draw [loosely dotted, thin] (17.5mm,\r*2\rowhight+\rowhight) -- (\fromright{0},\r*2\rowhight+\rowhight);
+      \node at (0,\r*2\rowhight+\rowhight) [time] {\Large :};
+      \node at (\fromright{22mm},\r*2\rowhight+\rowhight) [report] {\Large 599};
+      \node at (\fromright{11mm},\r*2\rowhight+\rowhight) [report] {\Large 599};
+    }
+
+    \draw [loosely dashed] (0,0) rectangle (\fromright{0},20\rowhight);
+    \draw [loosely dotted, thin] (17.5mm,0) -- (17.5mm,20\rowhight);
+  \end{tikzpicture}
+}
+
+\begin{document}
+\pagestyle{empty}
+\enlargethispage{\margin}
+\dottedpage
+\dottedpage
+\dottedpage
+\dottedpage
+\end{document}

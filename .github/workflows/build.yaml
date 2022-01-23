@@ -16,6 +16,7 @@ jobs:
         name:
           - dotted
           - gridded
+          - sota-log
 
     steps:
       - name: Set up Git repository

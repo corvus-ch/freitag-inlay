@@ -12,7 +12,7 @@ clean_cmd := latexmk -c
 
 # Rules and targets
 .PHONY: all
-all: dotted.pdf gridded.pdf
+all: dotted.pdf gridded.pdf sota-log.pdf
 
 .SUFFIXES: -inlay.pdf
 %-inlay.pdf: %-inlay.tex

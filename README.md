@@ -35,6 +35,7 @@ You will need:
 
 * Dotted: 5mm dotted
 * Gridded: a rectangular gridded pattern similar to the one of the [Freitag F27 Refill][f27]
+* SOTA log: An amateur radio log book for Summits on the Air.
 
 This work is licensed under a
 [Creative Commons Attribution-ShareAlike 4.0 International License][cc-by-sa].
