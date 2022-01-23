@@ -37,14 +37,14 @@
     },
   ]
 
-    \node at (0,\fromtop{0}) [title] {\Huge\textcolor{lgray}{2022}\,-\,\textcolor{lgray}{01}\,-\,\textcolor{lgray}{01}\hfill\textcolor{lgray}{1X}\,/\,\textcolor{lgray}{AA}\,-\,\textcolor{lgray}{000}\nodepart{second}\huge\textcolor{lgray}{0000}\,.\,\textcolor{lgray}{0000} MHz \hfill \textcolor{lgray}{SSB} \hfill \textcolor{lgray}{1000}\,W};
+    \node at (0,\fromtop{0}) [title] {\Huge\textcolor{lgray}{2022}\,-\,\textcolor{lgray}{01}\,-\,\textcolor{lgray}{01}\hfill\textcolor{lgray}{1X}\,/\,\textcolor{lgray}{AA}\,-\,\textcolor{lgray}{000}\nodepart{second}\Large\textcolor{lgray}{0000}\,.\,\textcolor{lgray}{0000} MHz \hfill \textcolor{lgray}{SSB} \hfill \textcolor{lgray}{1000}\,W};
 
     \foreach \r in {0,...,9} {
       \draw [loosely dashed] (0,\r*2\rowhight) -- (\fromright{0},\r*2\rowhight);
       \draw [loosely dotted] (17.5mm,\r*2\rowhight+\rowhight) -- (\fromright{0},\r*2\rowhight+\rowhight);
-      \node at (0,\r*2\rowhight+\rowhight) [time] {:};
-      \node at (\fromright{22mm},\r*2\rowhight+\rowhight) [report] {599};
-      \node at (\fromright{11mm},\r*2\rowhight+\rowhight) [report] {599};
+      \node at (0,\r*2\rowhight+\rowhight) [time] {\Large :};
+      \node at (\fromright{22mm},\r*2\rowhight+\rowhight) [report] {\Large 599};
+      \node at (\fromright{11mm},\r*2\rowhight+\rowhight) [report] {\Large 599};
     }
 
     \draw [loosely dashed] (0,0) rectangle (\fromright{0},\fromtop{0});
