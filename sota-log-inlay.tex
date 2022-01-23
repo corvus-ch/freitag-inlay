@@ -41,15 +41,14 @@
 
     \foreach \r in {0,...,9} {
       \draw [loosely dashed] (0,\r*2\rowhight) -- (\fromright{0},\r*2\rowhight);
-      \draw [loosely dotted] (17.5mm,\r*2\rowhight+\rowhight) -- (\fromright{0},\r*2\rowhight+\rowhight);
+      \draw [loosely dotted, thin] (17.5mm,\r*2\rowhight+\rowhight) -- (\fromright{0},\r*2\rowhight+\rowhight);
       \node at (0,\r*2\rowhight+\rowhight) [time] {\Large :};
       \node at (\fromright{22mm},\r*2\rowhight+\rowhight) [report] {\Large 599};
       \node at (\fromright{11mm},\r*2\rowhight+\rowhight) [report] {\Large 599};
     }
 
-    \draw [loosely dashed] (0,0) rectangle (\fromright{0},\fromtop{0});
-    \draw [loosely dashed] (0,20\rowhight) -- (\fromright{0},20\rowhight);
-    \draw [loosely dotted] (17.5mm,0) -- (17.5mm,20\rowhight);
+    \draw [loosely dashed] (0,0) rectangle (\fromright{0},20\rowhight);
+    \draw [loosely dotted, thin] (17.5mm,0) -- (17.5mm,20\rowhight);
   \end{tikzpicture}
 }
 
