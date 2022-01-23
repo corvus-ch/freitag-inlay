@@ -5,18 +5,30 @@
 \usepackage{color}
 
 \newcommand{\dottedpage}{%
-  \begin{tikzpicture}[gray, ultra thin]
+  \begin{tikzpicture}[
+    gray,
+    ultra thin,
+    field/.style={
+      anchor=south west,
+      minimum height=8mm,
+      rectangle,
+    },
+    time/.style={field, minimum width=17.5mm, black},
+    report/.style={field, minimum width=11mm, black!10},
+  ]
 
-    \foreach \r in {0,...,10}
+
+    \foreach \r in {0,...,9} {
       \draw [loosely dashed] (0,\r*16mm) -- (\width-\margin-\margininner,\r*16mm);
-    \foreach \r in {0,...,9}
-      \draw [loosely dashed] (17.5mm,\r*16mm+8mm) -- (\width-\margin-\margininner,\r*16mm+8mm);
+      \draw [loosely dotted] (17.5mm,\r*16mm+8mm) -- (\width-\margin-\margininner,\r*16mm+8mm);
+      \node at (0,\r*16mm+8mm) [time] {:};
+      \node at (\width-\margin-\margininner-22mm,\r*16mm+8mm) [report] {599};
+      \node at (\width-\margin-\margininner-11mm,\r*16mm+8mm) [report] {599};
+     }
 
-    \draw [loosely dashed] (0,0) -- (0,\height-\margin-\margin);
-    \draw [loosely dashed] (17.5mm,0) -- (17.5mm,\height-\margin-\margin);
-    \draw [loosely dashed] (\width-\margin-\margininner-22mm,0) -- (\width-\margin-\margininner-22mm,\height-\margin-\margin);
-    \draw [loosely dashed] (\width-\margin-\margininner-11mm,0) -- (\width-\margin-\margininner-11mm,\height-\margin-\margin);
-    \draw [loosely dashed] (\width-\margin-\margininner,0) -- (\width-\margin-\margininner,\height-\margin-\margin);
+    \draw [loosely dashed] (0,0) rectangle (\width-\margin-\margininner,\height-\margin-\margin);
+    \draw [loosely dashed] (0,10*16mm) -- (\width-\margin-\margininner,10*16mm);
+    \draw [loosely dotted] (17.5mm,0) -- (17.5mm,10*16mm);
   \end{tikzpicture}
 }
 
