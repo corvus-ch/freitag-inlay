@@ -1,0 +1,30 @@
+\documentclass[twoside]{scrartcl}
+
+\usepackage{freitag}
+\usepackage{tikz}
+\usepackage{color}
+
+\newcommand{\dottedpage}{%
+  \begin{tikzpicture}[gray, ultra thin]
+
+    \foreach \r in {0,...,10}
+      \draw [loosely dashed] (0,\r*16mm) -- (\width-\margin-\margininner,\r*16mm);
+    \foreach \r in {0,...,9}
+      \draw [loosely dashed] (17.5mm,\r*16mm+8mm) -- (\width-\margin-\margininner,\r*16mm+8mm);
+
+    \draw [loosely dashed] (0,0) -- (0,\height-\margin-\margin);
+    \draw [loosely dashed] (17.5mm,0) -- (17.5mm,\height-\margin-\margin);
+    \draw [loosely dashed] (\width-\margin-\margininner-22mm,0) -- (\width-\margin-\margininner-22mm,\height-\margin-\margin);
+    \draw [loosely dashed] (\width-\margin-\margininner-11mm,0) -- (\width-\margin-\margininner-11mm,\height-\margin-\margin);
+    \draw [loosely dashed] (\width-\margin-\margininner,0) -- (\width-\margin-\margininner,\height-\margin-\margin);
+  \end{tikzpicture}
+}
+
+\begin{document}
+\pagestyle{empty}
+\enlargethispage{\margin}
+\dottedpage
+\dottedpage
+\dottedpage
+\dottedpage
+\end{document}
