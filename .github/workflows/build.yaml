@@ -28,20 +28,21 @@ jobs:
         run: ./update-git-info.sh
 
       - name: Compile inlay
-        uses: xu-cheng/latex-action@v2
+        uses: xu-cheng/latex-action@v3
         with:
           root_file: ${{ matrix.name }}-inlay.tex
           latexmk_use_xelatex: true
 
       - name: Compile main document
-        uses: xu-cheng/latex-action@v2
+        uses: xu-cheng/latex-action@v3
         with:
           root_file: ${{ matrix.name }}.tex
           latexmk_use_xelatex: true
 
       - name: Upload PDF
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
+          name: ${{ matrix.name }}.pdf
           path: ${{ matrix.name }}.pdf
 
   release:
@@ -57,7 +58,7 @@ jobs:
           fetch-depth: "0"
 
       - name: Download artifacts
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
 
       - name: Build changelog
         id: build_changelog
