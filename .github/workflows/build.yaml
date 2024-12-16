@@ -28,13 +28,13 @@ jobs:
         run: ./update-git-info.sh
 
       - name: Compile inlay
-        uses: xu-cheng/latex-action@v2
+        uses: xu-cheng/latex-action@v3
         with:
           root_file: ${{ matrix.name }}-inlay.tex
           latexmk_use_xelatex: true
 
       - name: Compile main document
-        uses: xu-cheng/latex-action@v2
+        uses: xu-cheng/latex-action@v3
         with:
           root_file: ${{ matrix.name }}.tex
           latexmk_use_xelatex: true
