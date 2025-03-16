@@ -51,17 +51,10 @@ jobs:
       - name: Download artifacts
         uses: https://code.forgejo.org/forgejo/download-artifact@v4
 
-      - name: Build changelog
-        id: build_changelog
-        uses: https://github.com/mikepenz/release-changelog-builder-action@v5
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
-
       - name: Create Release
         uses: https://code.forgejo.org/actions/forgejo-release@v2.5.3
         with:
           direction: upload
           url: "https://codeberg.org"
           release-dir: artifacts
-          release-notes: ${{ steps.build_changelog.outputs.changelog }}
           token: ${{ secrets.TOKEN }}
