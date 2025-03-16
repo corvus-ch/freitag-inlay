@@ -11,6 +11,7 @@ on:
 jobs:
   build_pdf:
     runs-on: docker
+    container: codeberg.org/corvus-ch/texlive
     strategy:
       matrix:
         name:
@@ -27,17 +28,8 @@ jobs:
       - name: Update git info
         run: ./update-git-info.sh
 
-      - name: Compile inlay
-        uses: https://github.com/xu-cheng/latex-action@v3
-        with:
-          root_file: ${{ matrix.name }}-inlay.tex
-          latexmk_use_xelatex: true
-
-      - name: Compile main document
-        uses: https://github.com/xu-cheng/latex-action@v3
-        with:
-          root_file: ${{ matrix.name }}.tex
-          latexmk_use_xelatex: true
+      - name: Compile document
+        run: make ${{ matrix.name }}.pdf
 
       - name: Upload PDF
         uses: https://code.forgejo.org/forgejo/upload-artifact@v4
