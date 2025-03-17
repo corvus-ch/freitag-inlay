@@ -1,10 +1,5 @@
 # Prologue
 MAKEFLAGS += --warn-undefined-variables
-SHELL := bash
-.SHELLFLAGS := -eu -o pipefail
-.DEFAULT_GOAL := all
-.DELETE_ON_ERROR:
-.SUFFIXES:
 
 # Internal variables
 build_cmd := latexmk -pdf -pdflatex="xelatex -shell-escape -interaction=nonstopmode" -use-make

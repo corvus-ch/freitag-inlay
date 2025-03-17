@@ -4,6 +4,14 @@
 
 Templates to build custom inlays for the [Freitag F26 Agenda][f26].
 
+## Available Templates
+
+* Dotted: 5mm dotted
+* Gridded: a rectangular gridded pattern similar to the one of the [Freitag F27 Refill][f27]
+* SOTA log: An amateur radio log book for Summits on the Air.
+
+Download ready to use PDFs from [this projects release page][releases].
+
 ## How to use?
 
 You will need:
@@ -14,8 +22,8 @@ You will need:
 * An [Atoma puncher][puncher]
 * A PDF template from this repository
 
-1. The templates are designed to be printed double side.
-   Use long edge binding in your printer settings.
+1. The templates are designed to be printed double sided.
+   Use short edge binding in your printer settings.
 
    If your printer does not support double-sided printing, you can do it manually.
    First, print all odd pages.
@@ -31,12 +39,6 @@ You will need:
 
 4. Assemble the punched sheets into your Freitag F26 Agenda.
 
-## Available Templates
-
-* Dotted: 5mm dotted
-* Gridded: a rectangular gridded pattern similar to the one of the [Freitag F27 Refill][f27]
-* SOTA log: An amateur radio log book for Summits on the Air.
-
 This work is licensed under a
 [Creative Commons Attribution-ShareAlike 4.0 International License][cc-by-sa].
 
@@ -48,3 +50,4 @@ This work is licensed under a
 [f26]: https://www.freitag.ch/de/f26
 [f27]: https://www.freitag.ch/de/f27r
 [puncher]: https://atoma.be/en/product/atoma-puncher/
+[releases]: https://codeberg.org/corvus-ch/freitag-inlay/releases
