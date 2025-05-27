@@ -18,6 +18,7 @@ jobs:
           - dotted
           - gridded
           - sota-log
+          - bandplan
 
     steps:
       - name: Set up Git repository
@@ -53,7 +54,7 @@ jobs:
         with:
           path: artifacts
           merge-multiple: true
- 
+
       - name: Create Release
         uses: https://code.forgejo.org/actions/forgejo-release@v2.5.3
         with:
