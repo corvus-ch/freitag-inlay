@@ -1,0 +1,113 @@
+\documentclass[twoside]{scrartcl}
+\usepackage{freitag}
+\usepackage{tikz}
+\usepackage{xfp}
+\usetikzlibrary{math}
+\usetikzlibrary{positioning}
+
+\tikzmath{\bandheight = 16;}
+
+\newcommand{\assignment}[3]{\draw [#1] (0em, \bandtranslate{#2}) rectangle (0.5em, \bandtranslate{#3});}
+\newcommand{\bandlower}{}
+\newcommand{\bandtranslate}[1]{\fpeval{\bandheight cm - (#1 - \bandlower) * \bandscale}}
+\newcommand{\bw}[3]{\draw [#1] (0.5em, \bandtranslate{#2}) rectangle (1.25em, \bandtranslate{#3});}
+\newcommand{\freq}[2][mid]{\draw (2.75em, \bandtranslate{#2}) node [#1] {#2};}
+\newcommand{\legend}[3][]{\node (#2) [#2, legend, label={[label distance=1em]0:#3}, #1] {};}
+\newcommand{\mode}[3]{\draw [#1] (1.25em, \bandtranslate{#2}) rectangle (2.75em, \bandtranslate{#3});}
+
+\newenvironment{band}[2]{\noindent
+  \begin{minipage}[t]{7em}
+	\vspace{0pt}
+  \begin{tikzpicture}
+  \renewcommand{\bandlower}{#1}
+	\tikzmath{
+		\bandspan = \fpeval{#2 - #1};
+		\bandscale = \bandheight / \bandspan;
+	}
+	\freq[start]{#1}
+	\freq[end]{#2}
+}
+{\end{tikzpicture}\end{minipage}}
+
+\newenvironment{bandnotes}{\begin{minipage}[t]{\dimexpr\linewidth-7.3em\relax}
+	\vspace{0.38em}
+	\begin{description}
+}{\end{description}\end{minipage}}
+
+% Modes
+\tikzstyle{cw} = [fill=red, line width=1pt, draw=white]
+\tikzstyle{data} = [fill=yellow, line width=1pt, draw=white]
+\tikzstyle{ssb} = [fill=green, line width=1pt, draw=white]
+\tikzstyle{voice} = [fill=blue, line width=1pt, draw=white]
+\tikzstyle{all} = [fill=cyan, line width=1pt, draw=white]
+\tikzstyle{rpt} = [fill=magenta, line width=1pt, draw=white]
+\tikzstyle{sat} = [fill=violet, line width=1pt, draw=white]
+\tikzstyle{none} = [fill=base03, line width=1pt, draw=white]
+
+% Bandwidth
+\tikzstyle{20} = [fill=base03, line width=1pt, draw=white]
+\tikzstyle{200} = [fill=base02, line width=1pt, draw=white]
+\tikzstyle{500} = [fill=base01, line width=1pt, draw=white]
+\tikzstyle{1000} = [fill=base00, line width=1pt, draw=white]
+\tikzstyle{2700} = [fill=base0, line width=1pt, draw=white]
+\tikzstyle{6000} = [fill=base1, line width=1pt, draw=white]
+\tikzstyle{12k} = [fill=base2, line width=1pt, draw=white]
+\tikzstyle{20k} = [fill=base3, line width=1pt, draw=white]
+
+% Allocation
+\tikzstyle{primary} = [fill=base2, line width=1pt, draw=white]
+\tikzstyle{secondary} = [fill=base1, line width=1pt, draw=white]
+
+% Label position
+\tikzstyle{start} = [anchor=north west]
+\tikzstyle{mid} = [anchor=west]
+\tikzstyle{end} = [anchor=south west]
+
+\tikzstyle{legend} = [minimum size=1.8em]
+
+\definecolor{base03}{RGB}{0,43,54}
+\definecolor{base02}{RGB}{7,54,66}
+\definecolor{base01}{RGB}{88,110,117}
+\definecolor{base00}{RGB}{101,123,131}
+\definecolor{base0}{RGB}{131,148,150}
+\definecolor{base1}{RGB}{147,161,161}
+\definecolor{base2}{RGB}{238,232,213}
+\definecolor{base3}{RGB}{253,246,227}
+\definecolor{yellow}{RGB}{181,137,0}
+\definecolor{orange}{RGB}{203,75,22}
+\definecolor{red}{RGB}{220,50,47}
+\definecolor{magenta}{RGB}{211,54,130}
+\definecolor{violet}{RGB}{108,113,196}
+\definecolor{blue}{RGB}{38,139,210}
+\definecolor{cyan}{RGB}{42,161,152}
+\definecolor{green}{RGB}{133,153,0}
+
+\begin{document}
+\inlaytitlepage{Bandplan}
+\addsec{Bandplan Legend}
+\noindent\begin{tikzpicture}[node distance=2.2em]
+	\node (modes) {\textbf{Modes}};
+	\legend[below=of modes.west, anchor=west]{cw}{CW}
+	\legend[below of=cw]{data}{Data Modes}
+	\legend[below of=data]{ssb}{Single Side Band}
+	\legend[below of=ssb]{voice}{FM and Digital Voice}
+	\legend[below of=voice]{all}{Data and Voice}
+	\legend[below of=all]{rpt}{Repeater Input and Output}
+	\legend[below of=rpt]{sat}{Satelite and Space}
+	\legend[below of=sat]{none}{Reserved for special use}
+
+	\node[below=3em of none.south west, anchor=west] (bw) {\textbf{Bandwidths}};
+	\legend[below=of bw.west, anchor=west]{20}{20 Hz}
+	\legend[below of=20]{200}{200 Hz}
+	\legend[below of=200]{500}{500 Hz}
+	\legend[below of=500]{1000}{1000 Hz}
+	\legend[below of=1000]{2700}{2700 Hz}
+	\legend[below of=2700]{6000}{6000 Hz}
+	\legend[below of=6000]{12k}{12 KHz}
+	\legend[below of=12k]{20k}{20 KHz}
+
+	\node[right=10em of bw.west, anchor=west] (alloc) {\textbf{Allocation}};
+	\legend[below=of alloc.west, anchor=west]{primary}{Primary}
+	\legend[below of=primary]{secondary}{Secondary}
+\end{tikzpicture}
+\end{document}
