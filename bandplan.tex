@@ -291,4 +291,38 @@
 		\item[SSB QRP] 18130 kHz
 	\end{description}
 \end{bandnotes}
+
+\addsec{21 MHz (15 m) / 1000 W (100 W)}
+\begin{band}{21000}{21450}
+	\assignment{primary}{21000}{21450}
+
+	\bw{200}{21000}{21070}
+	\bw{500}{21070}{21110}
+	\bw{2700}{21110}{21120}
+	\bw{500}{21120}{21149}
+	\bw{2700}{21151}{21450}
+
+	\freq{21070}
+	\freq{21110}
+	\freq{21120}
+	\freq[end]{21149}
+	\freq[start]{21151}
+
+	\mode{cw}{21000}{21070}
+	\mode{data}{21070}{21149}
+	\mode{none}{21149}{21151}
+	\mode{ssb}{21151}{21450}
+\end{band}
+\begin{bandnotes}
+	\item[Prefered side band] USB
+	\item[Emergency] 21360 kHz
+	\item[Activity Centers] \mbox{}
+	\begin{description}
+		\item[CW QRP] 21060 kHz
+		\item[CW QRS] 21055 kHz
+		\item[Digital Voice] 21180 kHz
+		\item[Image] 21340 kHz
+		\item[SSB QRP] 21285 kHz
+	\end{description}
+\end{bandnotes}
 \end{document}
