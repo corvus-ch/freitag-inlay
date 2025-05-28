@@ -399,4 +399,65 @@
 		\item[SSB QRP] 28360 kHz
 	\end{description}
 \end{bandnotes}
+
+\addsec{50 MHz (6 m) / 100 W}
+\begin{band}{50000}{50900}
+	\assignment{secondary}{50000}{50900}
+
+	\bw{200}{50000}{50100}
+	\bw{2700}{50100}{50400}
+	\bw{1000}{50400}{50500}
+	\bw{12k}{50500}{50900}
+
+	\freq[start]{50030}
+	\freq{50100}
+	\freq{50300}
+	\freq{50400}
+	\freq{50500}
+	\freq{50700}
+
+	\mode{none}{50000}{50030}
+	\mode{cw}{50030}{50100}
+	\mode{ssb}{50100}{50300}
+	\mode{data}{50300}{50500}
+	\mode{voice}{50500}{50700}
+	\mode{rpt}{50700}{50900}
+\end{band}
+\begin{bandnotes}
+	\item[Prefered side band] USB
+	\item[Activity Centers] \mbox{}
+	\begin{description}
+		\item[CW Intercontinental] \mbox{} \\ 50.090 MHz
+		\item[Crossband] 50.285 MHz
+		\item[EME] 50.310–320 MHz
+		\item[Image] 50.550 kHz
+		\item[MS] 50.320–380 MHz
+		\item[PSK] 50.305 MHz
+		\item[RTTY] 50.600 kHz
+		\item[SSB Intercontinental] \mbox{} \\ 50.110 MHz
+		\item[SSB International] \mbox{} \\ 50.150 MHz
+		\item[SSTV] 50.510 MHz
+	\end{description}
+	\item[Calling frequencies] \mbox{}
+	\begin{description}
+		\item[DV] 50.630 MHz
+		\item[FM] 51.510 MHz
+	\end{description}
+\end{bandnotes}
+
+\pagebreak
+
+\mbox{}\vfill
+
+\begin{band}{50900}{52000}
+	\assignment{secondary}{50900}{52000}
+
+	\bw{12k}{50900}{52000}
+
+	\freq{51200}
+	\freq{51400}
+
+	\mode{voice}{50900}{52000}
+	\mode{rpt}{51200}{51400}
+\end{band}
 \end{document}
