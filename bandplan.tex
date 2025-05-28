@@ -544,4 +544,68 @@
 		\item 145.3375 MHz
 	\end{itemize}
 \end{bandnotes}
+
+\addsec{430 MHz (70 cm) / 1000 W (50 W)}
+\begin{band}{430.000}{433.000}
+	\assignment{secondary}{430.000}{433.000}
+
+	\bw{20k}{430.000}{432.000}
+	\bw{500}{432.000}{432.100}
+	\bw{2700}{432.100}{432.400}
+	\bw{500}{432.400}{432.500}
+	\bw{12k}{432.500}{433.000}
+
+	\freq{430.400}
+	\freq[end]{432.000}
+	\freq{432.100}
+	\freq[end]{432.400}
+	\freq{432.500}
+
+	\mode{voice}{430.000}{430.400}
+	\mode{rpt}{430.400}{432.000}
+	\mode{cw}{432.000}{432.100}
+	\mode{ssb}{432.100}{432.400}
+	\mode{none}{432.400}{432.500}
+	\mode{data}{432.500}{433.000}
+\end{band}
+\begin{bandnotes}
+	\item[Prefered side band] USB
+	\item[Emergency] 434.000 MHz FM
+	\item[Calling frequencies] \mbox{}
+	\begin{description}
+		\item[CW] 432.050 MHz
+		\item[DV] 433.450 MHz
+		\item[FM] 433.500 MHz
+		\item[SSB] 432.200 MHz
+	\end{description}
+	\item[Activity Centers] \mbox{}
+	\begin{description}
+		\item[MS] 432.370 MHz
+		\item[Microwave talkback] \mbox{} \\ 432.350 MHz
+		\item[SSTV] 433.400 MHz
+	\end{description}
+	\item[APRS] 432.500 MHz
+\end{bandnotes}
+
+\pagebreak
+
+\mbox{}\vfill
+
+\begin{band}{433.000}{440.000}
+	\assignment{primary}{433.000}{438.000}
+	\assignment{secondary}{438.000}{440.000}
+
+	\bw{12k}{433.000}{433.600}
+	\bw{12k}{434.000}{435.000}
+
+	\freq{433.600}
+	\freq{434.000}
+	\freq{435.000}
+	\freq{438.000}
+
+	\mode{all}{433.000}{435.000}
+	\mode{sat}{435.000}{438.000}
+	\mode{rpt}{438.000}{439.100}
+	\mode{all}{439.100}{440.000}
+\end{band}
 \end{document}
