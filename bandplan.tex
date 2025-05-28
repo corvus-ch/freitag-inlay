@@ -460,4 +460,88 @@
 	\mode{voice}{50900}{52000}
 	\mode{rpt}{51200}{51400}
 \end{band}
+
+\addsec{144 MHz (2 m) / 1000 W (100 W)}
+\begin{band}{144.000}{144.975}
+	\assignment{primary}{144.000}{144.975}
+	\bw{2700}{144.000}{144.025}
+	\bw{500} {144.025}{144.150}
+	\bw{2700}{144.150}{144.400}
+	\bw{500}{144.490}{144.500}
+	\bw{20k}{144.500}{144.794}
+	\bw{12k}{144.794}{144.975}
+
+	\freq[start]{144.025}
+	\freq{144.150}
+	\freq{144.400}
+	\freq[end]{144.490}
+	\freq[start]{144.500}
+	\freq{144.794}
+
+	\mode{sat}{144.000}{144.025}
+	\mode{cw}{144.025}{144.150}
+	\mode{ssb}{144.150}{144.400}
+	\mode{none}{144.400}{144.491}
+	\mode{data}{144.491}{144.975}
+\end{band}
+\begin{bandnotes}
+
+	\item[Prefered side band] USB
+	\item[Emergency] \mbox{}
+	\begin{itemize}
+		\item 144.260 MHz USB
+		\item 145.500 MHz FM
+	\end{itemize}
+	\item[Calling frequencies] \mbox{}
+	\begin{description}
+		\item[DV] 145.375 MHz
+		\item[FM] 145.500 MHz
+		\item[CW] 144.050 MHz
+	\end{description}
+	\item[Activity Centers] \mbox{}
+	\begin{description}
+		\item[ATV talk back] 144.750 MHz
+		\item[Data (RTTY, …)] 144.500 MHz
+		\item[Image (SSTV, Fax, …)] \mbox{} \\ 144.500 MHz
+		\item[MS CW] 144.100 MHz
+		\item[MS SSB] 144.195–144.205 MHz
+	\end{description}
+	\item[APRS] 144.800 MHz
+\end{bandnotes}
+
+\pagebreak
+
+\mbox{}\vfill
+
+\begin{band}{144.975}{146.000}
+	\assignment{primary}{144.975}{146.000}
+
+	\bw{12k}{144.975}{146.000}
+
+	\freq[end]{145.194}
+	\freq[start]{145.206}
+	\freq{145.5625}
+	\freq{145.794}
+
+	\mode{rpt}{144.975}{145.194}
+	\mode{voice}{145.194}{145.575}
+	\mode{rpt}{145.575}{145.794}
+	\mode{sat}{145.794}{146.000}
+\end{band}
+\begin{bandnotes}
+	\item[DV internet voice gateways] \mbox{}
+	\begin{itemize}
+		\item 144.8125 MHz
+		\item 144.8250 MHz
+		\item 144.8375 MHz
+		\item 144.8500 MHz
+		\item 144.8625 MHz
+	\end{itemize}
+	\item[FM internet voice gateways] \mbox{}
+	\begin{itemize}
+		\item 145.2375 MHz
+		\item 145.2875 MHz
+		\item 145.3375 MHz
+	\end{itemize}
+\end{bandnotes}
 \end{document}
