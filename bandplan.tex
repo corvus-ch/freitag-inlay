@@ -110,4 +110,27 @@
 	\legend[below=of alloc.west, anchor=west]{primary}{Primary}
 	\legend[below of=primary]{secondary}{Secondary}
 \end{tikzpicture}
+
+\addsec{1.8 MHZ (160 m) / 1000 W (100 W)}
+\begin{band}{1810}{2000}
+	\assignment{primary}{1810}{1850}
+	\assignment{secondary}{1850}{2000}
+
+	\bw{200}{1810}{1838}
+	\bw{500}{1838}{1840}
+	\bw{2700}{1840}{2000}
+
+	\freq[end]{1838}
+	\freq{1840}
+	\freq[start]{1843}
+	\freq[start]{1850}
+
+	\mode{cw}{1810}{1838}
+	\mode{data}{1838}{1843}
+	\mode{ssb}{1843}{2000}
+\end{band}
+\begin{bandnotes}
+	\item[Prefered side band] LSB
+	\item[CW QRP calling frequency] 1836 kHz
+\end{bandnotes}
 \end{document}
