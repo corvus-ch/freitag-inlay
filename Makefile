@@ -10,7 +10,7 @@ clean_cmd := latexmk -c
 all: dotted.pdf gridded.pdf sota-log.pdf
 
 .SUFFIXES: -inlay.pdf
-%-inlay.pdf: %-inlay.tex
+%-inlay.pdf: %-inlay.tex freitag.sty
 	$(build_cmd) $<
 
 .SUFFIXES: .pdf
