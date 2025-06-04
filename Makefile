@@ -13,7 +13,7 @@ tmp/%.pdf: %.tex freitag.sty
 	$(build_cmd) -outdir=tmp $<
 
 tmp/%-nup.pdf: tmp/%.pdf
-	pdfjam --vanilla --noautoscale true --nup 2x1 --landscape '--signature*' 4 --no-twoside --shortedge -o $@ -- $< 2-
+	pdfjam --vanilla --noautoscale true --nup 2x1 --landscape '--signature' 4 --twoside --shortedge -o $@ -- $< 3-
 
 %.pdf: tmp/%.pdf  tmp/%-nup.pdf
 	pdfjam --vanilla --rotateoversize true --paper a4paper -o $@ -- $< 1 tmp/$*-nup.pdf
