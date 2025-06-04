@@ -15,33 +15,32 @@
 % Page setup
 % ----------
 
+\usepackage{pgfpages}
+\pgfpagesuselayout{resize to}[a5paper]
+\pgfpageslogicalpageoptions{1}{%
+	scale=1,
+	original width=\width,
+	original height=\height,
+}
+\pgfpageslogicalpageoptions{2}{%
+	scale=1,
+	original width=\width,
+	original width=\width,
+	original height=\height,
+}
+
 \RequirePackage[
-	papersize={\width,\height},
-	cropmarks,
-	croplength=3mm,
-	cropgap=2mm,
-	nobleedclip,
-	topmargin=\margin,
-	rightmargin=\margin,
-	botmargin=\margin,
-	leftmargin=\margininner,
-]{zwpagelayout}
+	inner=\margininner,
+	outer=\margin,
+	twoside,
+	vmargin=\margin,
+	ignoreall,
+	layoutheight=\height,
+	layoutwidth=\width,
+	showcrop,
+]{geometry}
 
 \setlength\parindent{0pt}
-
-% =====
-% Fonts
-% -----
-\RequirePackage{ifxetex}
-
-\ifxetex
-	\RequirePackage{fontspec}
-	\RequirePackage{xltxtra}
-	\RequirePackage{xunicode}
-\else
-	\RequirePackage[utf8]{inputenc}
-	\RequirePackage[T1]{fontenc}
-\fi
 
 % =======
 % Options
@@ -86,3 +85,30 @@
 
 	\SetBgContents{\pagegrid}
 \fi
+
+% ==========
+% Title page
+% ----------
+
+\RequirePackage{hyperref}
+\RequirePackage{gitinfo2}
+\RequirePackage[
+	type={CC},
+	modifier={by-sa},
+	version={4.0},
+]{doclicense}
+
+\newcommand{\inlaytitlepage}[1]{
+	\begin{titlepage}
+		\subject{Freitag Agenda Inlay}
+		\title{#1}
+		\author{Christian Häusler}
+		\date{\gitFirstTagDescribe~\gitAuthorIsoDate}
+		\publishers{https://codeberg.org/corvus-ch/freitag-inlay}
+		\clearpage
+		\maketitle
+		\thispagestyle{empty}
+		\vfill
+		\scriptsize\doclicenseThis
+	\end{titlepage}
+}

@@ -1,8 +1,7 @@
-\documentclass[twoside]{scrartcl}
+\documentclass{scrartcl}
 
 \usepackage{freitag}
 \usepackage{tikz}
-\usepackage{color}
 
 \newcommand{\griddedpage}{%
   \begin{tikzpicture}[gray, very thin]
@@ -12,8 +11,7 @@
 }
 
 \begin{document}
-\pagestyle{empty}
-\enlargethispage{\margin}
+\inlaytitlepage{Gridded}
 \griddedpage
 \griddedpage
 \griddedpage
