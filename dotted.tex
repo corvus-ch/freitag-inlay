@@ -1,7 +1,21 @@
 \documentclass{scrartcl}
 
-\usepackage{inlay}
+\usepackage{freitag}
+\usepackage{tikz}
+
+\newcommand{\griddim}{5mm}
+
+\newcommand{\dottedpage}{%
+  \begin{tikzpicture}[gray, ultra thin]
+    \draw [step=\griddim, line cap=round, dash pattern=on 0pt off \griddim, thin] (0,0) grid (\width-\margin-\margininner,\height-\margin-\margin);
+    \draw [dashed] (5mm,0) -- (5mm,\height-\margin-\margin);
+  \end{tikzpicture}
+}
 
 \begin{document}
-\inlay{Dotted}{dotted-inlay.pdf}
+\inlaytitlepage{Dotted}
+\dottedpage
+\dottedpage
+\dottedpage
+\dottedpage
 \end{document}

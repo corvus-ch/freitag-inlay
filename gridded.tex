@@ -1,7 +1,19 @@
 \documentclass{scrartcl}
 
-\usepackage{inlay}
+\usepackage{freitag}
+\usepackage{tikz}
+
+\newcommand{\griddedpage}{%
+  \begin{tikzpicture}[gray, very thin]
+    \draw [xstep=10mm,ystep=4mm] (0,0) grid (\width-\margin-\margininner,\height-\margin-\margin);
+    \draw [dashed] (\margintext,0) -- (\margintext,\height-\margin-\margin);
+  \end{tikzpicture}
+}
 
 \begin{document}
-\inlay{Gridded}{gridded-inlay.pdf}
+\inlaytitlepage{Gridded}
+\griddedpage
+\griddedpage
+\griddedpage
+\griddedpage
 \end{document}
