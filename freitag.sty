@@ -7,45 +7,46 @@
 
 \setlength\parindent{0pt}
 
+\PassOptionsToPackage{
+	ignoreall,
+	inner=14mm,
+	layoutheight=182mm,
+	layouthoffset=16.5mm, % (a5width - layoutwidth) / 2
+	layoutvoffset=14mm, % (a5height - layoutheight) / 2
+	layoutwidth=115mm,
+	outer=9mm,
+	paper=a5paper,
+	showcrop,
+	twoside,
+	vmargin=5mm,
+}{geometry}
+
 % =======
 % Options
 % -------
 \newif\if@optionlayout\@optionlayoutfalse
 \DeclareOption{layout}{\@optionlayouttrue}
 
-\newif\if@optionafive\@optionafivefalse
-\DeclareOption{a5}{\@optionafivetrue}
+\DeclareOption{a5}{\PassOptionsToPackage{
+		resetpaper,
+		reset,
+		paper=a5paper,
+		inner=29mm,
+		textwidth=102mm,
+		textheight=180mm,
+		twoside,
+		ignoreall,
+		%footskip=100mm,
+	}{geometry}}
+
+\DeclareOption*{\PassOptionsToPackage{\CurrentOption}{geometry}}
 \ProcessOptions\relax
 
 % ==========
 % Page setup
 % ----------
 
-\if@optionafive
-	\RequirePackage[
-		inner=29mm,
-		textwidth=102mm,
-		textheight=180mm,
-		paper=a5paper,
-		twoside,
-		ignoreall,
-		footskip=100mm,
-	]{geometry}
-\else
-	\RequirePackage[
-		ignoreall,
-		inner=14mm,
-		layoutheight=182mm,
-		layouthoffset=16.5mm, % (a5width - layoutwidth) / 2
-		layoutvoffset=14mm, % (a5height - layoutheight) / 2
-		layoutwidth=115mm,
-		outer=9mm,
-		paper=a5paper,
-		showcrop,
-		twoside,
-		vmargin=5mm,
-	]{geometry}
-\fi
+\RequirePackage{geometry}
 
 % ===========
 % Page layout

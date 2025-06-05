@@ -1,5 +1,5 @@
 \documentclass[twoside]{scrartcl}
-\usepackage{freitag}
+\usepackage[includefoot]{freitag}
 \usepackage{gitinfo2}
 \usepackage{tikz}
 \usepackage{xfp}
@@ -15,7 +15,10 @@
 \lofoot*{https://codeberg.org/corvus-ch/freitag-inlay}
 \rofoot*{\gitFirstTagDescribe~\gitAuthorIsoDate}
 
-\tikzmath{\bandheight = 16;}
+\makeatletter
+% TODO Calculate space occupied by title
+\newcommand*{\bandheight}{\strip@pt\dimexpr0.03521126761\dimexpr\textheight - 1.2cm\relax\relax}
+\makeatother
 
 \newcommand{\assignment}[3]{\draw [#1] (0em, \bandtranslate{#2}) rectangle (0.5em, \bandtranslate{#3});}
 \newcommand{\bandlower}{}
