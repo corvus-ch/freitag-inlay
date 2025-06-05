@@ -1,13 +1,34 @@
-\documentclass{scrartcl}
+\documentclass[twoside]{scrartcl}
 
 \usepackage{freitag}
 \usepackage{tikz}
+\usepackage{tikzpagenodes}
+
+\usetikzlibrary{calc}
 
 \newcommand{\griddedpage}{%
-  \begin{tikzpicture}[gray, very thin]
-    \draw [xstep=10mm,ystep=4mm] (0,0) grid (\width-\margin-\margininner,\height-\margin-\margin);
-    \draw [dashed] (\margintext,0) -- (\margintext,\height-\margin-\margin);
+  \begin{tikzpicture}[
+    remember picture,
+    overlay,
+    help lines
+  ]
+    \draw
+      [
+        shift={($(current page text area.north west)-(4mm, 0mm)$)},
+        xstep=10mm,
+        ystep=4mm
+      ]
+      ($(current page text area.south west)-(4mm, 0mm)$)
+      grid
+      ($(current page text area.north east)+(4mm, 0mm)$);
+
+    \draw
+      [dashed]
+      (current page text area.south west)
+      --
+      (current page text area.north west);
   \end{tikzpicture}
+  \clearpage
 }
 
 \begin{document}

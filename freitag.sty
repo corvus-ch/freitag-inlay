@@ -3,76 +3,86 @@
 
 % ==========
 % Dimensions
-% ==========
+% ----------
 
-\newcommand{\width}{115mm}
-\newcommand{\height}{182mm}
-\newcommand{\margin}{5mm}
-\newcommand{\margininner}{10mm}
-\newcommand{\margintext}{4mm}
 \setlength\parindent{0pt}
 
 % =======
 % Options
 % -------
-\newif\if@optiongrid\@optiongridfalse
-\DeclareOption{grid}{\@optiongridtrue}
+\newif\if@optionlayout\@optionlayoutfalse
+\DeclareOption{layout}{\@optionlayouttrue}
 \ProcessOptions\relax
 
 % ==========
 % Page setup
 % ----------
 
-\usepackage{pgfpages}
-\pgfpagesuselayout{resize to}[a5paper]
-\pgfpageslogicalpageoptions{1}{%
-	scale=1,
-	original width=\width,
-	original height=\height,
-}
-\pgfpageslogicalpageoptions{2}{%
-	scale=1,
-	original width=\width,
-	original width=\width,
-	original height=\height,
-}
-
 \RequirePackage[
-	inner=\margininner,
-	outer=\margin,
-	twoside,
-	vmargin=\margin,
 	ignoreall,
-	layoutheight=\height,
-	layoutwidth=\width,
+	inner=14mm,
+	layoutheight=182mm,
+	layouthoffset=16.5mm, % (a5width - layoutwidth) / 2
+	layoutvoffset=14mm, % (a5height - layoutheight) / 2
+	layoutwidth=115mm,
+	outer=9mm,
+	paper=a5paper,
 	showcrop,
+	twoside,
+	vmargin=5mm,
 ]{geometry}
 
-% ===============
-% Background grid
-% ===============
+% ===========
+% Page layout
+% -----------
 
-\newcommand{\pagegrid}{%
-	\begin{tikzpicture}[overlay]
-		\draw [step=5mm] (0,0) grid (\width,\height);
-		\checkoddpage
-		\ifoddpage
-			\draw [draw=blue] (\margininner,\margin) -- (\margininner,\height-\margin);
-			\draw [draw=blue,dashed] (\margininner+\margintext,\margin) -- (\margininner+\margintext,\height-\margin);
-			\draw [draw=blue] (\width-\margin,\margin) -- (\width-\margin,\height-\margin);
-			\draw [draw=blue] (\margininner,\margin) -- (\width-\margin,\margin);
-			\draw [draw=blue] (\margininner,\height-\margin) -- (\width-\margin,\height-\margin);
-		\else
-			\draw [draw=blue] (\width-\margininner,\margin) -- (\width-\margininner,\height-\margin);
-			\draw [draw=blue,dashed] (\margin+\margintext,\margin) -- (\margin+\margintext,\height-\margin);
-			\draw [draw=blue] (\margin,\margin) -- (\margin,\height-\margin);
-			\draw [draw=blue] (\margin,\margin) -- (\width-\margininner,\margin);
-			\draw [draw=blue] (\margin,\height-\margin) -- (\width-\margininner,\height-\margin);
-		\fi
+\newcommand{\freitag@layout}{%
+	\begin{tikzpicture}[
+			remember picture,
+			overlay,
+		]
+		\draw
+		[yellow, step=5mm]
+		(current page.south west)
+		grid
+		(current page.north east);
+
+		\draw
+		[blue]
+		(current page text area.south west)
+		rectangle
+		(current page text area.north east);
+
+		\draw
+		[blue, dashed]
+		($(current page text area.south west)-(4mm, 0mm)$)
+		rectangle
+		(current page text area.north west);
+
+		\draw
+		[blue, dashed]
+		(current page text area.south east)
+		rectangle
+		($(current page text area.north east)+(4mm, 0mm)$);
+
+		\draw [red]
+		(current page header area.south west)
+		rectangle
+		(current page header area.north east);
+
+		\draw [red]
+		(current page footer area.south west)
+		rectangle
+		(current page footer area.north east);
+
+		\draw [red]
+		(current page marginpar area.south west)
+		rectangle
+		(current page marginpar area.north east);
 	\end{tikzpicture}
 }
 
-\if@optiongrid
+\if@optionlayout
 	\RequirePackage[
 		angle=0.0,
 		scale=1.0,
@@ -80,9 +90,10 @@
 	]{background}
 	\RequirePackage[strict]{changepage}
 	\RequirePackage{tikz}
+	\RequirePackage{tikzpagenodes}
 	\usetikzlibrary{calc}
 
-	\SetBgContents{\pagegrid}
+	\SetBgContents{\freitag@layout}
 \fi
 
 % ==========

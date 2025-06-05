@@ -2,14 +2,35 @@
 
 \usepackage{freitag}
 \usepackage{tikz}
-
-\newcommand{\griddim}{5mm}
+\usepackage{tikzpagenodes}
+\usetikzlibrary{calc}
 
 \newcommand{\dottedpage}{%
-  \begin{tikzpicture}[gray, ultra thin]
-    \draw [step=\griddim, line cap=round, dash pattern=on 0pt off \griddim, thin] (0,0) grid (\width-\margin-\margininner,\height-\margin-\margin);
-    \draw [dashed] (5mm,0) -- (5mm,\height-\margin-\margin);
+  \begin{tikzpicture}[
+    help lines,
+    overlay,
+    remember picture,
+  ]
+    \draw
+      [
+        dash pattern=on 0.1pt off \the\dimexpr 5mm - 0.1pt\relax,
+        line cap=round,
+        shift={($(current page text area.north west)-(\the\dimexpr 4mm + 0.1pt\relax, 0mm)$)},
+        xstep=2\textwidth,
+        ystep=5mm,
+        thin,
+      ]
+      ($(current page text area.north west)-(4mm, 0mm)$)
+      grid
+      ($(current page text area.south east)+(4mm, 0mm)$);
+
+    \draw
+      [dashed]
+      ($(current page text area.south west)+(1mm, 0mm)$)
+      --
+      ($(current page text area.north west)+(1mm, 0mm)$);
   \end{tikzpicture}
+  \clearpage
 }
 
 \begin{document}
