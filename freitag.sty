@@ -1,6 +1,8 @@
 %!TEX encoding = UTF-8 Unicode
 \ProvidesPackage{freitag}
 
+\RequirePackage{scrlayer-scrpage}
+
 % ==========
 % Dimensions
 % ----------
@@ -36,8 +38,12 @@
 		textheight=180mm,
 		twoside,
 		ignoreall,
-		%footskip=100mm,
-	}{geometry}}
+	}{geometry}
+
+	\ofoot*{}
+	\ifoot*{}
+	\cfoot*{}
+}
 
 \DeclareOption*{\PassOptionsToPackage{\CurrentOption}{geometry}}
 \ProcessOptions\relax
