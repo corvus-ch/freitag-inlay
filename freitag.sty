@@ -124,13 +124,15 @@
 	version={4.0},
 ]{doclicense}
 
+\newcommand{\freitagSourceURL}{https://codeberg.org/corvus-ch/freitag-inlay}
+\newcommand{\freitagSourceRevision}{\gitFirstTagDescribe~\gitAuthorIsoDate}
 \newcommand{\inlaytitlepage}[1]{
 	\begin{titlepage}
 		\subject{Freitag Agenda Inlay}
 		\title{#1}
 		\author{Christian Häusler}
-		\date{\gitFirstTagDescribe~\gitAuthorIsoDate}
-		\publishers{https://codeberg.org/corvus-ch/freitag-inlay}
+		\date{\freitagSourceRevision}
+		\publishers{\freitagSourceURL}
 		\clearpage
 		\maketitle
 		\thispagestyle{empty}
