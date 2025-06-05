@@ -10,6 +10,14 @@
 \newcommand{\margin}{5mm}
 \newcommand{\margininner}{10mm}
 \newcommand{\margintext}{4mm}
+\setlength\parindent{0pt}
+
+% =======
+% Options
+% -------
+\newif\if@optiongrid\@optiongridfalse
+\DeclareOption{grid}{\@optiongridtrue}
+\ProcessOptions\relax
 
 % ==========
 % Page setup
@@ -39,15 +47,6 @@
 	layoutwidth=\width,
 	showcrop,
 ]{geometry}
-
-\setlength\parindent{0pt}
-
-% =======
-% Options
-% -------
-\newif\if@optiongrid\@optiongridfalse
-\DeclareOption{grid}{\@optiongridtrue}
-\ProcessOptions\relax
 
 % ===============
 % Background grid
