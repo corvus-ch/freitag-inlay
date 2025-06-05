@@ -117,15 +117,31 @@
 % ----------
 
 \RequirePackage{hyperref}
+\RequirePackage[
+	calc,
+	showisoZ,
+	showseconds=false,
+]{datetime2}
 \RequirePackage{gitinfo2}
 \RequirePackage[
 	type={CC},
 	modifier={by-sa},
 	version={4.0},
 ]{doclicense}
+\RequirePackage{xstring}
+
+% Convert \gitAuthorIsoDate to UTC without seconds.
+\DTMsetstyle{iso}
+\StrSubstitute[1]{\gitAuthorIsoDate}{ }{T}[\freitag@AuthorDate]
+\StrDel{\freitag@AuthorDate}{ }[\freitag@AuthorDate]
+\StrLeft{\freitag@AuthorDate}{22}[\freitag@AuthorDatePrefix]
+\StrRight{\freitag@AuthorDate}{2}[\freitag@AuthorDateSuffix]
+\DTMsavetimestamp{freitagGitDate}{\freitag@AuthorDatePrefix:\freitag@AuthorDateSuffix}
+\DTMtozulu{freitagGitDate}{freitagGitDateZ}
 
 \newcommand{\freitagSourceURL}{https://codeberg.org/corvus-ch/freitag-inlay}
-\newcommand{\freitagSourceRevision}{\gitFirstTagDescribe~\gitAuthorIsoDate}
+\newcommand{\freitagSourceRevision}{\gitFirstTagDescribe~\DTMuse{freitagGitDateZ}}
+
 \newcommand{\inlaytitlepage}[1]{
 	\begin{titlepage}
 		\subject{Freitag Agenda Inlay}
