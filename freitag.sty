@@ -1,11 +1,27 @@
 %!TEX encoding = UTF-8 Unicode
 \ProvidesPackage{freitag}
 
+\RequirePackage{scrlayer-scrpage}
+
 % ==========
 % Dimensions
 % ----------
 
 \setlength\parindent{0pt}
+
+\PassOptionsToPackage{
+	ignoreall,
+	inner=14mm,
+	layoutheight=182mm,
+	layouthoffset=16.5mm, % (a5width - layoutwidth) / 2
+	layoutvoffset=14mm, % (a5height - layoutheight) / 2
+	layoutwidth=115mm,
+	outer=9mm,
+	paper=a5paper,
+	showcrop,
+	twoside,
+	vmargin=5mm,
+}{geometry}
 
 % =======
 % Options
@@ -13,39 +29,30 @@
 \newif\if@optionlayout\@optionlayoutfalse
 \DeclareOption{layout}{\@optionlayouttrue}
 
-\newif\if@optionafive\@optionafivefalse
-\DeclareOption{a5}{\@optionafivetrue}
+\DeclareOption{a5}{\PassOptionsToPackage{
+		resetpaper,
+		reset,
+		paper=a5paper,
+		inner=29mm,
+		textwidth=102mm,
+		textheight=180mm,
+		twoside,
+		ignoreall,
+	}{geometry}
+
+	\ofoot*{}
+	\ifoot*{}
+	\cfoot*{}
+}
+
+\DeclareOption*{\PassOptionsToPackage{\CurrentOption}{geometry}}
 \ProcessOptions\relax
 
 % ==========
 % Page setup
 % ----------
 
-\if@optionafive
-	\RequirePackage[
-		inner=29mm,
-		textwidth=102mm,
-		textheight=180mm,
-		paper=a5paper,
-		twoside,
-		ignoreall,
-		footskip=100mm,
-	]{geometry}
-\else
-	\RequirePackage[
-		ignoreall,
-		inner=14mm,
-		layoutheight=182mm,
-		layouthoffset=16.5mm, % (a5width - layoutwidth) / 2
-		layoutvoffset=14mm, % (a5height - layoutheight) / 2
-		layoutwidth=115mm,
-		outer=9mm,
-		paper=a5paper,
-		showcrop,
-		twoside,
-		vmargin=5mm,
-	]{geometry}
-\fi
+\RequirePackage{geometry}
 
 % ===========
 % Page layout
@@ -116,20 +123,39 @@
 % ----------
 
 \RequirePackage{hyperref}
+\RequirePackage[
+	calc,
+	showisoZ,
+	showseconds=false,
+]{datetime2}
 \RequirePackage{gitinfo2}
 \RequirePackage[
 	type={CC},
 	modifier={by-sa},
 	version={4.0},
 ]{doclicense}
+\RequirePackage{xstring}
 
+% Convert \gitAuthorIsoDate to UTC without seconds.
+\DTMsetstyle{iso}
+\StrSubstitute[1]{\gitAuthorIsoDate}{ }{T}[\freitag@AuthorDate]
+\StrDel{\freitag@AuthorDate}{ }[\freitag@AuthorDate]
+\StrLeft{\freitag@AuthorDate}{22}[\freitag@AuthorDatePrefix]
+\StrRight{\freitag@AuthorDate}{2}[\freitag@AuthorDateSuffix]
+\DTMsavetimestamp{freitagGitDate}{\freitag@AuthorDatePrefix:\freitag@AuthorDateSuffix}
+\DTMtozulu{freitagGitDate}{freitagGitDateZ}
+
+\newcommand{\freitagSourceURL}{https://codeberg.org/corvus-ch/freitag-inlay}
+\newcommand{\freitagSourceRevision}{\gitFirstTagDescribe~\DTMuse{freitagGitDateZ}}
+
+\addtokomafont{publishers}{\normalsize}
 \newcommand{\inlaytitlepage}[1]{
 	\begin{titlepage}
 		\subject{Freitag Agenda Inlay}
 		\title{#1}
 		\author{Christian Häusler}
-		\date{\gitFirstTagDescribe~\gitAuthorIsoDate}
-		\publishers{https://codeberg.org/corvus-ch/freitag-inlay}
+		\date{\freitagSourceRevision}
+		\publishers{\freitagSourceURL}
 		\clearpage
 		\maketitle
 		\thispagestyle{empty}

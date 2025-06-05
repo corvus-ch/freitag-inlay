@@ -1,11 +1,20 @@
 \documentclass[twoside]{scrartcl}
-\usepackage{freitag}
+\usepackage[includefoot]{freitag}
 \usepackage{tikz}
 \usepackage{xfp}
 \usetikzlibrary{math}
 \usetikzlibrary{positioning}
 
-\tikzmath{\bandheight = 16;}
+\addtokomafont{pagefoot}{\tiny}
+\lefoot*{\freitagSourceURL}
+\refoot*{\freitagSourceRevision}
+\lofoot*{\freitagSourceURL}
+\rofoot*{\freitagSourceRevision}
+
+\makeatletter
+% TODO Calculate space occupied by title
+\newcommand*{\bandheight}{\strip@pt\dimexpr0.03521126761\dimexpr\textheight - 1.2cm\relax\relax}
+\makeatother
 
 \newcommand{\assignment}[3]{\draw [#1] (0em, \bandtranslate{#2}) rectangle (0.5em, \bandtranslate{#3});}
 \newcommand{\bandlower}{}
