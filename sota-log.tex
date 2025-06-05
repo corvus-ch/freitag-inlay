@@ -2,59 +2,99 @@
 
 \usepackage{freitag}
 \usepackage{tikz}
-\usepackage{calc}
+\usepackage{tikzpagenodes}
 
+\usetikzlibrary{calc}
 \usetikzlibrary{shapes.multipart}
+\usetikzlibrary{chains}
 
-\renewcommand{\familydefault}{\sfdefault}
+\newcommand{\reportline}[1][]{
+    \node
+      #1
+      [
+        anchor=south west,
+        color=black!10,
+        inner xsep=4mm,
+        inner ysep=0,
+        minimum height=7.5mm,
+        on chain,
+        outer sep=0,
+        text width=\the\dimexpr \textwidth - 8mm \relax,
+      ]
+      {\Large\sffamily\hspace{5mm}:\hfill599\hspace{1em}599};
+}
 
-\newcommand{\fromright}[1]{\width-\margin-\margininner-#1}
-\newcommand{\fromtop}[1]{\height-\margin-\margin-#1}
-\newlength{\rowhight}
-\setlength{\rowhight}{7.5mm}
-
-\definecolor{lgray}{gray}{0.9}
-
-\newcommand{\dottedpage}{%
+\newcommand{\sotalogpage}{%
   \begin{tikzpicture}[
-    gray,
-    ultra thin,
-    field/.style={
-      anchor=south west,
-      minimum height=\rowhight,
-      rectangle,
-    },
-    time/.style={field, minimum width=17.5mm, black},
-    report/.style={field, minimum width=11mm, black!10},
-    title/.style={
-      anchor=north west,
-      minimum width=\fromright{0},
-      text width=\fromright{1em},
-      rectangle split,
-      rectangle split parts=2,
-      black,
-    },
+    ampersand replacement=\&,
+    help lines,
+    node distance=7.5mm,
+    overlay,
+    remember picture,
+    start chain=going above,
   ]
 
-    \node at (0,\fromtop{0}) [title] {\Huge\textcolor{lgray}{2022}\,-\,\textcolor{lgray}{01}\,-\,\textcolor{lgray}{01}\hfill\textcolor{lgray}{1X}\,/\,\textcolor{lgray}{AA}\,-\,\textcolor{lgray}{000}\nodepart{second}\Large\textcolor{lgray}{0000}\,.\,\textcolor{lgray}{0000} MHz \hfill \textcolor{lgray}{SSB} \hfill \textcolor{lgray}{1000}\,W};
+    \node
+      (title)
+      at (current page text area.north west)
+      [
+        anchor=north west,
+        color=black!10,
+        inner xsep=0,
+        rectangle split parts=2,
+        rectangle split,
+        text width=\textwidth,
+      ]
+      {
+        \Huge
+        \sffamily
+        \the\year{}\textcolor{black}{-}01\textcolor{black}{-}01
+        \hfill
+        1X\textcolor{black}{/}AA\textcolor{black}{-}000
+        \nodepart{second}
+        \Large
+        \sffamily
+        % TODO why is the text color bleading over?
+        %0000.0000 \textcolor{black}{MHz}
+        0000.0000 MHz
+        \hfill
+        SSB
+        \hfill
+        1000 \textcolor{black}{W}
+      };
 
-    \foreach \r in {0,...,9} {
-      \draw [loosely dashed] (0,\r*2\rowhight) -- (\fromright{0},\r*2\rowhight);
-      \draw [loosely dotted, thin] (17.5mm,\r*2\rowhight+\rowhight) -- (\fromright{0},\r*2\rowhight+\rowhight);
-      \node at (0,\r*2\rowhight+\rowhight) [time] {\Large :};
-      \node at (\fromright{22mm},\r*2\rowhight+\rowhight) [report] {\Large 599};
-      \node at (\fromright{11mm},\r*2\rowhight+\rowhight) [report] {\Large 599};
-    }
+    \reportline[at ($(current page text area.south west)+(0,7.5mm)$)]
+    \foreach \r in {0,...,8} {\reportline}
 
-    \draw [loosely dashed] (0,0) rectangle (\fromright{0},20\rowhight);
-    \draw [loosely dotted, thin] (17.5mm,0) -- (17.5mm,20\rowhight);
+    \draw
+      [
+        loosely dotted,
+        shift={($(current page text area.south west)+(17.5mm,0)$)},
+        xstep=\textwidth,
+        ystep=7.5mm,
+      ]
+      ($(current page text area.south west)+(17.5mm,0)$)
+      grid
+      (title.south east);
+
+    \draw
+      [
+        loosely dashed,
+        shift={(current page text area.south west)},
+        xstep=\textwidth,
+        ystep=15mm,
+      ]
+      (current page text area.south west)
+      grid
+      (title.south east);
   \end{tikzpicture}
+  \clearpage
 }
 
 \begin{document}
 \inlaytitlepage{SOTA Logbook}
-\dottedpage
-\dottedpage
-\dottedpage
-\dottedpage
+\sotalogpage
+\sotalogpage
+\sotalogpage
+\sotalogpage
 \end{document}
