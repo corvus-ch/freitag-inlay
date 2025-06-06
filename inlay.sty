@@ -2,6 +2,7 @@
 \ProvidesPackage{inlay}
 
 \RequirePackage{scrlayer-scrpage}
+\RequirePackage{babel}
 
 % ==========
 % Dimensions
@@ -68,6 +69,14 @@
 
 	\KOMAoption{fontsize}{8pt}
 	\addtokomafont{section}{\Large}
+}
+
+\DeclareOption{en}{
+	\PassOptionsToPackage{english}{babel}
+}
+
+\DeclareOption{de}{
+	\PassOptionsToPackage{ngerman}{babel}
 }
 
 \DeclareOption*{\PassOptionsToPackage{\CurrentOption}{geometry}}
