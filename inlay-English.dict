@@ -1,3 +1,6 @@
 \ProvidesDictionary{inlay}{English}
 
 \providetranslation{Inlay Subject}{Notebook Inlay}
+\providetranslation{Inlay Subtitle (a5)}{A5}
+\providetranslation{Inlay Subtitle (a6)}{A6}
+\providetranslation{Inlay Subtitle (f26)}{Freitag F26}

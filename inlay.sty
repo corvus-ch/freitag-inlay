@@ -12,6 +12,9 @@
 % =======
 % Options
 % -------
+
+\newcommand{\inlay@pageformat}{undefined}
+
 \newif\if@optionlayout\@optionlayoutfalse
 \DeclareOption{layout}{\@optionlayouttrue}
 
@@ -28,6 +31,8 @@
 		twoside,
 		vmargin=5mm,
 	}{geometry}
+
+	\renewcommand{\inlay@pageformat}{f26}
 }
 
 \DeclareOption{a5}{\PassOptionsToPackage{
@@ -44,6 +49,8 @@
 	\ofoot*{}
 	\ifoot*{}
 	\cfoot*{}
+
+	\renewcommand{\inlay@pageformat}{a5}
 }
 
 \DeclareOption{a6}{\PassOptionsToPackage{
@@ -68,6 +75,7 @@
 
 	\KOMAoption{fontsize}{8pt}
 	\addtokomafont{section}{\Large}
+	\renewcommand{\inlay@pageformat}{a6}
 }
 
 \DeclareOption{en}{
@@ -196,6 +204,7 @@
 	\begin{titlepage}
 		\subject{\translate{Inlay Subject}}
 		\title{\translate{Inlay Title}}
+		\subtitle{\translate{Inlay Subtitle (\inlay@pageformat)}}
 		\author{Christian Häusler}
 		\date{\inlaySourceRevision}
 		\publishers{\inlaySourceURL}
