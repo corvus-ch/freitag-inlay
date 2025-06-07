@@ -2,7 +2,6 @@
 \ProvidesPackage{inlay}
 
 \RequirePackage{scrlayer-scrpage}
-\RequirePackage{babel}
 
 % ==========
 % Dimensions
@@ -73,10 +72,12 @@
 
 \DeclareOption{en}{
 	\PassOptionsToPackage{english}{babel}
+	\PassOptionsToPackage{english}{translator}
 }
 
 \DeclareOption{de}{
 	\PassOptionsToPackage{ngerman}{babel}
+	\PassOptionsToPackage{ngerman}{translator}
 }
 
 \DeclareOption*{\PassOptionsToPackage{\CurrentOption}{geometry}}
@@ -87,6 +88,14 @@
 % ----------
 
 \RequirePackage{geometry}
+
+% ====
+% i18n
+% ----
+
+\RequirePackage{babel}
+\RequirePackage{translator}
+\usedictionary{inlay}
 
 % ===========
 % Page layout
@@ -185,8 +194,8 @@
 \addtokomafont{publishers}{\normalsize}
 \newcommand{\inlaytitlepage}[1]{
 	\begin{titlepage}
-		\subject{Freitag Agenda Inlay}
-		\title{#1}
+		\subject{\translate{Inlay Subject}}
+		\title{\translate{Inlay Title}}
 		\author{Christian Häusler}
 		\date{\inlaySourceRevision}
 		\publishers{\inlaySourceURL}
