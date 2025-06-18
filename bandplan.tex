@@ -91,25 +91,26 @@
 \definecolor{cyan}{RGB}{42,161,152}
 \definecolor{green}{RGB}{133,153,0}
 
+\usedictionary{bandplan}
 \deftranslation[to=English]{Inlay Title}{Swiss Amateurradio Band Plan}
 \deftranslation[to=German]{Inlay Title}{Schweizer Amateurfunk Bandplan}
 
 \begin{document}
 \inlaytitlepage{Bandplan}
 
-\addsec{Bandplan Legend}
+\addsec{\translate{Bandplan Legend}}
 \noindent\begin{tikzpicture}[node distance=2em]
-	\node (modes) {\textbf{Modes}};
-	\legend[below=of modes.west, anchor=west]{cw}{CW}
-	\legend[below of=cw]{data}{Data Modes}
-	\legend[below of=data]{ssb}{Single Side Band}
-	\legend[below of=ssb]{voice}{FM and Digital Voice}
-	\legend[below of=voice]{all}{Data and Voice}
-	\legend[below of=all]{rpt}{Repeater Input and Output}
-	\legend[below of=rpt]{sat}{Satellite and Space}
-	\legend[below of=sat]{none}{Reserved for special use}
+	\node (modes) {\textbf{\translate{Modes}}};
+	\legend[below=of modes.west, anchor=west]{cw}{\translate{CW}}
+	\legend[below of=cw]{data}{\translate{Data Modes}}
+	\legend[below of=data]{ssb}{\translate{Single Side Band}}
+	\legend[below of=ssb]{voice}{\translate{FM and Digital Voice}}
+	\legend[below of=voice]{all}{\translate{Data and Voice}}
+	\legend[below of=all]{rpt}{\translate{Repeater Input and Output}}
+	\legend[below of=rpt]{sat}{\translate{Satelite and Space}}
+	\legend[below of=sat]{none}{\translate{Reserved for special use}}
 
-	\node[below=3em of none.south west, anchor=west] (bw) {\textbf{Bandwidths}};
+	\node[below=3em of none.south west, anchor=west] (bw) {\textbf{\translate{Bandwidths}}};
 	\legend[below=of bw.west, anchor=west]{20}{20 Hz}
 	\legend[below of=20]{200}{200 Hz}
 	\legend[below of=200]{500}{500 Hz}
@@ -119,9 +120,9 @@
 	\legend[below of=6000]{12k}{12 KHz}
 	\legend[below of=12k]{20k}{20 KHz}
 
-	\node[right=10em of bw.west, anchor=west] (alloc) {\textbf{Allocation}};
-	\legend[below=of alloc.west, anchor=west]{primary}{Primary}
-	\legend[below of=primary]{secondary}{Secondary}
+	\node[right=10em of bw.west, anchor=west] (alloc) {\textbf{\translate{Allocation}}};
+	\legend[below=of alloc.west, anchor=west]{primary}{\translate{Primary}}
+	\legend[below of=primary]{secondary}{\translate{Secondary}}
 \end{tikzpicture}
 
 \addsec{1.8 MHZ (160 m) / 1000 W (100 W)}

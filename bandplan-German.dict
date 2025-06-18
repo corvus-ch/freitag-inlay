@@ -1,0 +1,16 @@
+\ProvidesDictionary{bandplan}{German}
+
+\providetranslation{Allocation}{Zuweisung}
+\providetranslation{Bandplan Legend}{Banplanlegende}
+\providetranslation{Bandwidths}{Bandbreiten}
+\providetranslation{CW}{CW}
+\providetranslation{Data Modes}{Digitale Betriebsarten}
+\providetranslation{Data and Voice}{Daten und Sprache}
+\providetranslation{FM and Digital Voice}{FM und digitale Sprache}
+\providetranslation{Modes}{Betriebsarten}
+\providetranslation{Primary}{Primär}
+\providetranslation{Repeater Input and Output}{Repeater Ein- und Ausgabe}
+\providetranslation{Reserved for special use}{Vorbehalten für besondere Zwecke}
+\providetranslation{Satelite and Space}{Sateliten and Weltraum}
+\providetranslation{Secondary}{Sekundär}
+\providetranslation{Single Side Band}{Einseitenband}
