@@ -1,5 +1,5 @@
 %!TEX encoding = UTF-8 Unicode
-\ProvidesPackage{freitag}
+\ProvidesPackage{inlay}
 
 \RequirePackage{scrlayer-scrpage}
 
@@ -58,7 +58,7 @@
 % Page layout
 % -----------
 
-\newcommand{\freitag@layout}{%
+\newcommand{\inlay@layout}{%
 	\begin{tikzpicture}[
 			remember picture,
 			overlay,
@@ -115,7 +115,7 @@
 	\RequirePackage{tikzpagenodes}
 	\usetikzlibrary{calc}
 
-	\SetBgContents{\freitag@layout}
+	\SetBgContents{\inlay@layout}
 \fi
 
 % ==========
@@ -138,15 +138,15 @@
 
 % Convert \gitAuthorIsoDate to UTC without seconds.
 \DTMsetstyle{iso}
-\StrSubstitute[1]{\gitAuthorIsoDate}{ }{T}[\freitag@AuthorDate]
-\StrDel{\freitag@AuthorDate}{ }[\freitag@AuthorDate]
-\StrLeft{\freitag@AuthorDate}{22}[\freitag@AuthorDatePrefix]
-\StrRight{\freitag@AuthorDate}{2}[\freitag@AuthorDateSuffix]
-\DTMsavetimestamp{freitagGitDate}{\freitag@AuthorDatePrefix:\freitag@AuthorDateSuffix}
-\DTMtozulu{freitagGitDate}{freitagGitDateZ}
+\StrSubstitute[1]{\gitAuthorIsoDate}{ }{T}[\inlay@AuthorDate]
+\StrDel{\inlay@AuthorDate}{ }[\inlay@AuthorDate]
+\StrLeft{\inlay@AuthorDate}{22}[\inlay@AuthorDatePrefix]
+\StrRight{\inlay@AuthorDate}{2}[\inlay@AuthorDateSuffix]
+\DTMsavetimestamp{inlayGitDate}{\inlay@AuthorDatePrefix:\inlay@AuthorDateSuffix}
+\DTMtozulu{inlayGitDate}{inlayGitDateZ}
 
-\newcommand{\freitagSourceURL}{https://codeberg.org/corvus-ch/freitag-inlay}
-\newcommand{\freitagSourceRevision}{\gitFirstTagDescribe~\DTMuse{freitagGitDateZ}}
+\newcommand{\inlaySourceURL}{https://codeberg.org/corvus-ch/freitag-inlay}
+\newcommand{\inlaySourceRevision}{\gitFirstTagDescribe~\DTMuse{inlayGitDateZ}}
 
 \addtokomafont{publishers}{\normalsize}
 \newcommand{\inlaytitlepage}[1]{
@@ -154,8 +154,8 @@
 		\subject{Freitag Agenda Inlay}
 		\title{#1}
 		\author{Christian Häusler}
-		\date{\freitagSourceRevision}
-		\publishers{\freitagSourceURL}
+		\date{\inlaySourceRevision}
+		\publishers{\inlaySourceURL}
 		\clearpage
 		\maketitle
 		\thispagestyle{empty}

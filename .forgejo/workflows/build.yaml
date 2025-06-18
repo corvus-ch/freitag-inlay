@@ -15,14 +15,14 @@ jobs:
     strategy:
       matrix:
         name:
-          - bandplan
           - bandplan-a5
-          - dotted
+          - bandplan-f26
           - dotted-a5
-          - gridded
+          - dotted-f26
           - gridded-a5
-          - sota-log
+          - gridded-f26
           - sota-log-a5
+          - sota-log-f26
 
     steps:
       - name: Set up Git repository
