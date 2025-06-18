@@ -1,5 +1,6 @@
 \ProvidesDictionary{bandplan}{German}
 
+\providetranslation{Activity Centers}{Aktivitätszentren}
 \providetranslation{Allocation}{Zuweisung}
 \providetranslation{Bandplan Legend}{Banplanlegende}
 \providetranslation{Bandwidths}{Bandbreiten}
@@ -8,9 +9,10 @@
 \providetranslation{Data and Voice}{Daten und Sprache}
 \providetranslation{FM and Digital Voice}{FM und digitale Sprache}
 \providetranslation{Modes}{Betriebsarten}
+\providetranslation{Preferred side band}{Bevorzugtes Seitenband}
 \providetranslation{Primary}{Primär}
 \providetranslation{Repeater Input and Output}{Repeater Ein- und Ausgabe}
 \providetranslation{Reserved for special use}{Vorbehalten für besondere Zwecke}
-\providetranslation{Satelite and Space}{Sateliten and Weltraum}
+\providetranslation{Satelite and Space}{Satelit and Weltraum}
 \providetranslation{Secondary}{Sekundär}
 \providetranslation{Single Side Band}{Einseitenband}

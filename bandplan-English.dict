@@ -1,5 +1,6 @@
 \ProvidesDictionary{bandplan}{English}
 
+\providetranslation{Activity Centers}{Activity Centers}
 \providetranslation{Allocation}{Allocation}
 \providetranslation{Bandplan Legend}{Bandplan Legend}
 \providetranslation{Bandwidths}{Bandwidths}
@@ -8,6 +9,7 @@
 \providetranslation{Data and Voice}{Data and Voice}
 \providetranslation{FM and Digital Voice}{FM and Digital Voice}
 \providetranslation{Modes}{Modes}
+\providetranslation{Preferred side band}{Preferred side band}
 \providetranslation{Primary}{Primary}
 \providetranslation{Repeater Input and Output}{Repeater Input and Output}
 \providetranslation{Reserved for special use}{Reserved for special use}
