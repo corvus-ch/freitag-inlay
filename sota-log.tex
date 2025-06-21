@@ -13,7 +13,7 @@
       #1
       [
         anchor=south west,
-        color=black!10,
+        color=black!20,
         inner xsep=4mm,
         inner ysep=0,
         minimum height=7.5mm,
@@ -39,7 +39,7 @@
       at (current page text area.north west)
       [
         anchor=north west,
-        color=black!10,
+        color=black!20,
         inner xsep=0,
         rectangle split parts=2,
         rectangle split,
@@ -69,9 +69,11 @@
     \draw
       [
         loosely dotted,
-        shift={($(current page text area.south west)+(17.5mm,0)$)},
+        shift={($(current page text area.south west)+(17.5mm,7.5mm)$)},
+        color=black!60,
+        semithick,
         xstep=\textwidth,
-        ystep=7.5mm,
+        ystep=15mm,
       ]
       ($(current page text area.south west)+(17.5mm,0)$)
       grid
