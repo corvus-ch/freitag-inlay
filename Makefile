@@ -21,6 +21,9 @@ tmp/%-f26.pdf: %.tex inlay.sty Makefile
 tmp/%-a5.pdf: %.tex inlay.sty Makefile
 	$(build_cmd) -outdir=tmp -usepretex='\PassOptionsToPackage{a5}{inlay}' -jobname=$*-a5 $<
 
+tmp/%-a6.pdf: %.tex inlay.sty Makefile
+	$(build_cmd) -outdir=tmp -usepretex='\PassOptionsToPackage{a6}{inlay}' -jobname=$*-a6 $<
+
 tmp/%-nup.pdf: tmp/%.pdf
 	pdfjam --vanilla --noautoscale true --nup 2x1 --landscape '--signature' 4 --twoside --shortedge -o $@ -- $< 3-
 
