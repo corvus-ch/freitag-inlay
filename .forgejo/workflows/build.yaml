@@ -16,12 +16,16 @@ jobs:
       matrix:
         name:
           - bandplan-a5
+          - bandplan-a6
           - bandplan-f26
           - dotted-a5
+          - dotted-a6
           - dotted-f26
           - gridded-a5
+          - gridded-a6
           - gridded-f26
           - sota-log-a5
+          - sota-log-a6
           - sota-log-f26
 
     steps:
