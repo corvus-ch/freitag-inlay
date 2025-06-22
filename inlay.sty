@@ -45,6 +45,30 @@
 	\cfoot*{}
 }
 
+\DeclareOption{a6}{\PassOptionsToPackage{
+		resetpaper,
+		reset,
+		paper=a5paper,
+		ignoreall,
+		inner=20mm,
+		layout=a6paper,
+		layouthoffset=21.5mm, % (a5width - a6width) / 2
+		layoutvoffset=31mm, % (a5height - a6height) / 2
+		vmargin=6mm,
+		textwidth=77mm,
+		footskip=7mm,
+		showcrop,
+		twoside,
+	}{geometry}
+
+	\ofoot*{}
+	\ifoot*{}
+	\cfoot*{}
+
+	\KOMAoption{fontsize}{8pt}
+	\addtokomafont{section}{\Large}
+}
+
 \DeclareOption*{\PassOptionsToPackage{\CurrentOption}{geometry}}
 \ProcessOptions\relax
 

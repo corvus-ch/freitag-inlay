@@ -5,6 +5,7 @@
 \usepackage{tikzpagenodes}
 
 \usetikzlibrary{calc}
+\usetikzlibrary{math}
 \usetikzlibrary{shapes.multipart}
 \usetikzlibrary{chains}
 
@@ -23,6 +24,8 @@
       ]
       {\Large\sffamily\hspace{5mm}:\hfill599\hspace{1em}599};
 }
+
+\newdimen\bodyheight
 
 \newcommand{\sotalogpage}{%
   \begin{tikzpicture}[
@@ -63,8 +66,19 @@
         1000 \textcolor{black}{W}
       };
 
-    \reportline[at ($(current page text area.south west)+(0,7.5mm)$)]
-    \foreach \r in {0,...,8} {\reportline}
+    \reportline[(rpt) at ($(current page text area.south west)+(0,7.5mm)$)]
+
+    \tikzmath {
+      coordinate \bodyheightcoord, \reportlineheightcoord;
+      \bodyheightcoord = (title.south west) - (current page text area.south west);
+      \reportlineheightcoord = (rpt.north) - (rpt.south);
+      \bodyheightmax = veclen(\bodyheightcoord);
+      \reportlineheight = veclen(\reportlineheightcoord) * 2;
+      \rn = floor(\bodyheightmax / \reportlineheight) - 2;
+      \bodyheight = \reportlineheight * (\rn + 2);
+    };
+
+    \foreach \r in {0,...,\rn} {\reportline}
 
     \draw
       [
@@ -77,7 +91,7 @@
       ]
       ($(current page text area.south west)+(17.5mm,0)$)
       grid
-      (title.south east);
+      (\textwidth - 17.5mm, \bodyheight - 7.5mm);
 
     \draw
       [
@@ -88,7 +102,7 @@
       ]
       (current page text area.south west)
       grid
-      (title.south east);
+      (\textwidth, \bodyheight);
   \end{tikzpicture}
   \clearpage
 }
