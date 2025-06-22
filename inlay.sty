@@ -56,6 +56,7 @@
 		layoutvoffset=31mm, % (a5height - a6height) / 2
 		vmargin=6mm,
 		textwidth=72mm,
+		footskip=7mm,
 		showcrop,
 		twoside,
 	}{geometry}
@@ -63,6 +64,9 @@
 	\ofoot*{}
 	\ifoot*{}
 	\cfoot*{}
+
+	\KOMAoption{fontsize}{8pt}
+	\addtokomafont{section}{\Large}
 }
 
 \DeclareOption*{\PassOptionsToPackage{\CurrentOption}{geometry}}
