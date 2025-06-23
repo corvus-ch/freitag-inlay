@@ -3,6 +3,7 @@ MAKEFLAGS += --warn-undefined-variables
 
 # Internal variables
 build_cmd := latexmk -pdf -use-make --aux-directory=build
+pdfjam_cmd := pdfjam --vanilla
 
 formats=a5 a6 f26
 documents=$(basename $(wildcard *.tex))
@@ -25,7 +26,6 @@ endef
 
 $(foreach format,$(formats), $(eval $(FORMAT_RULE) ) )
 
-
 define BUILD_RULE
 %-$(format).pdf : %.tex inlay.sty Makefile
 	$$(build_cmd) -jobname=$$*-$(format) -usepretex='\PassOptionsToPackage{$(format)}{inlay}' $$<
@@ -33,11 +33,11 @@ endef
 
 $(foreach format,$(formats), $(eval $(BUILD_RULE) ) )
 
-build/%-nup.pdf: %.pdf
-	pdfjam --vanilla --noautoscale true --nup 2x1 --landscape '--signature' 4 --twoside --shortedge -o $@ -- $< 3-
+build/%-nup.pdf: %.pdf Makefile
+	$(pdfjam_cmd) --noautoscale true --nup 2x1 --landscape '--signature' 4 --twoside --shortedge -o $@ -- $< 3-
 
-%-booklet.pdf: %.pdf  build/%-nup.pdf
-	pdfjam --vanilla --rotateoversize true --paper a4paper -o $@ -- $< 1 build/$*-nup.pdf
+%-booklet.pdf: %.pdf  build/%-nup.pdf Makefile
+	$(pdfjam_cmd) --rotateoversize true --paper a4paper -o $@ -- $< 1 build/$*-nup.pdf
 
 .PHONY: clean
 clean:
