@@ -10,7 +10,7 @@ documents=$(basename $(wildcard *.tex))
 
 # Rules and targets
 .PHONY: all
-all: $(foreach document,$(documents), $(foreach format,$(formats), $(document)-$(format).pdf))
+all: $(foreach document,$(documents), $(foreach format,$(formats), $(document)-$(format)-booklet.pdf))
 
 define DOCUMENT_RULE
 .PHONY: $(document)
@@ -37,7 +37,7 @@ $(foreach format,$(formats), $(eval $(BUILD_RULE) ) )
 tmp/%-nup.pdf: tmp/%.pdf
 	pdfjam --vanilla --noautoscale true --nup 2x1 --landscape '--signature' 4 --twoside --shortedge -o $@ -- $< 3-
 
-%.pdf: tmp/%.pdf  tmp/%-nup.pdf
+%-booklet.pdf: tmp/%.pdf  tmp/%-nup.pdf
 	pdfjam --vanilla --rotateoversize true --paper a4paper -o $@ -- $< 1 tmp/$*-nup.pdf
 
 .PHONY: clean
