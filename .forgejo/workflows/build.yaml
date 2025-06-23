@@ -14,19 +14,8 @@ jobs:
     container: codeberg.org/corvus-ch/texlive
     strategy:
       matrix:
-        name:
-          - bandplan-a5
-          - bandplan-a6
-          - bandplan-f26
-          - dotted-a5
-          - dotted-a6
-          - dotted-f26
-          - gridded-a5
-          - gridded-a6
-          - gridded-f26
-          - sota-log-a5
-          - sota-log-a6
-          - sota-log-f26
+        document: [bandplan, dotted, gridded, sota-log]
+        format: [a5, a6, f26]
 
     steps:
       - name: Set up Git repository
@@ -38,13 +27,20 @@ jobs:
         run: ./update-git-info.sh
 
       - name: Compile document
-        run: make ${{ matrix.name }}.pdf
+        run: make ${{ matrix.document }}-${{ matrix.format }}-booklet.pdf
 
-      - name: Upload PDF
+      - name: Upload document
         uses: https://code.forgejo.org/forgejo/upload-artifact@v4
         with:
-          name: ${{ matrix.name }}.pdf
-          path: ${{ matrix.name }}.pdf
+          name: ${{ matrix.document }}-${{ matrix.format }}.pdf
+          path: ${{ matrix.document }}-${{ matrix.format }}.pdf
+          compression-level: 0
+
+      - name: Upload booklet
+        uses: https://code.forgejo.org/forgejo/upload-artifact@v4
+        with:
+          name: ${{ matrix.document }}-${{ matrix.format }}-booklet.pdf
+          path: ${{ matrix.document }}-${{ matrix.format }}-booklet.pdf
           compression-level: 0
 
   release:
