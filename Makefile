@@ -19,7 +19,7 @@ a5: bandplan-a5.pdf dotted-a5.pdf gridded-a5.pdf sota-log-a5.pdf
 a6: bandplan-a6.pdf dotted-a6.pdf gridded-a6.pdf sota-log-a6.pdf
 
 tmp/%-f26.pdf: %.tex inlay.sty Makefile
-	$(build_cmd) -outdir=tmp -jobname=$*-f26 $<
+	$(build_cmd) -outdir=tmp -usepretex='\PassOptionsToPackage{f26}{inlay}' -jobname=$*-f26 $<
 
 tmp/%-a5.pdf: %.tex inlay.sty Makefile
 	$(build_cmd) -outdir=tmp -usepretex='\PassOptionsToPackage{a5}{inlay}' -jobname=$*-a5 $<

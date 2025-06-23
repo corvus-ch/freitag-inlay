@@ -9,25 +9,26 @@
 
 \setlength\parindent{0pt}
 
-\PassOptionsToPackage{
-	ignoreall,
-	inner=14mm,
-	layoutheight=182mm,
-	layouthoffset=16.5mm, % (a5width - layoutwidth) / 2
-	layoutvoffset=14mm, % (a5height - layoutheight) / 2
-	layoutwidth=115mm,
-	outer=9mm,
-	paper=a5paper,
-	showcrop,
-	twoside,
-	vmargin=5mm,
-}{geometry}
-
 % =======
 % Options
 % -------
 \newif\if@optionlayout\@optionlayoutfalse
 \DeclareOption{layout}{\@optionlayouttrue}
+
+\DeclareOption{f26}{\PassOptionsToPackage{
+		ignoreall,
+		inner=14mm,
+		layoutheight=182mm,
+		layouthoffset=16.5mm, % (a5width - layoutwidth) / 2
+		layoutvoffset=14mm, % (a5height - layoutheight) / 2
+		layoutwidth=115mm,
+		outer=9mm,
+		paper=a5paper,
+		showcrop,
+		twoside,
+		vmargin=5mm,
+	}{geometry}
+}
 
 \DeclareOption{a5}{\PassOptionsToPackage{
 		resetpaper,
