@@ -1,14 +1,18 @@
-# Freitag inlay
+# Notebook inlays
 
 [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
 
-Templates to build custom inlays for the [Freitag F26 Agenda][f26].
+Custom inlays inspired by the [Freitag F26 Agenda][f26].
 
-## Available Templates
+## Available inlays
 
-* Dotted: 5mm dotted
+* Dotted: 5 mm dotted
 * Gridded: a rectangular gridded pattern similar to the one of the [Freitag F27 Refill][f27]
-* SOTA log: An amateur radio log book for Summits on the Air.
+* SOTA log: An amateur radio logbook for Summits on the Air.
+* Band plan: An amateur radio band plan aimed for Swiss operators.
+
+Besides the special format used for the [Freitag F26 Agenda][f26], each inlay is
+also available in **A5** and **A6** size.
 
 Download ready to use PDFs from [this projects release page][releases].
 
@@ -16,13 +20,13 @@ Download ready to use PDFs from [this projects release page][releases].
 
 You will need:
 
-* A [Freitag F26 Agenda][f26]
-* An printer for A4 sized paper
+* A [Freitag F26 Agenda][f26] or any other suitable binder
+* A printer for A4 sized paper
 * A way to cut paper on straight lines
-* An [Atoma puncher][puncher]
-* A PDF template from this repository
+* An [Atoma][puncher] or regular puncher
+* A PDF from this repository with the `-booklet` suffix
 
-1. The templates are designed to be printed double sided.
+1. The documents are designed to be printed double-sided.
    Use short edge binding in your printer settings.
 
    If your printer does not support double-sided printing, you can do it manually.
@@ -35,9 +39,9 @@ You will need:
    Think before you start cutting.
    If done in the wrong order, you cut away cut lines you need for a later cut.
 
-3. Stack the sheets in the right order and orientation and punch them with the Atoma puncher.
+3. Stack the sheets in the right order and orientation and punch.
 
-4. Assemble the punched sheets into your Freitag F26 Agenda.
+4. Assemble the punched sheets into your binder.
 
 This work is licensed under a
 [Creative Commons Attribution-ShareAlike 4.0 International License][cc-by-sa].
