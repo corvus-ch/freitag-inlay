@@ -93,8 +93,9 @@
 
 \begin{document}
 \inlaytitlepage{Bandplan}
+
 \addsec{Bandplan Legend}
-\noindent\begin{tikzpicture}[node distance=2.2em]
+\noindent\begin{tikzpicture}[node distance=2em]
 	\node (modes) {\textbf{Modes}};
 	\legend[below=of modes.west, anchor=west]{cw}{CW}
 	\legend[below of=cw]{data}{Data Modes}
@@ -102,7 +103,7 @@
 	\legend[below of=ssb]{voice}{FM and Digital Voice}
 	\legend[below of=voice]{all}{Data and Voice}
 	\legend[below of=all]{rpt}{Repeater Input and Output}
-	\legend[below of=rpt]{sat}{Satelite and Space}
+	\legend[below of=rpt]{sat}{Satellite and Space}
 	\legend[below of=sat]{none}{Reserved for special use}
 
 	\node[below=3em of none.south west, anchor=west] (bw) {\textbf{Bandwidths}};
@@ -139,7 +140,7 @@
 	\mode{ssb}{1843}{2000}
 \end{band}
 \begin{bandnotes}
-	\item[Prefered side band] LSB
+	\item[Preferred side band] LSB
 	\item[CW QRP calling frequency] 1836 kHz
 \end{bandnotes}
 
@@ -161,7 +162,7 @@
 	\mode{ssb}{3620}{3800}
 \end{band}
 \begin{bandnotes}
-	\item[Prefered side band] LSB
+	\item[Preferred side band] LSB
 	\item[Emergency Frequency] 3760 kHz
 	\item[Activity Centers] \mbox{}
 	\begin{description}
@@ -189,7 +190,7 @@
 	\mode{data}{5366}{5366.5}
 \end{band}
 \begin{bandnotes}
-	\item[Prefered side band] USB
+	\item[Preferred side band] USB
 \end{bandnotes}
 
 \addsec{7 MHz (40 m) / 1000 W}
@@ -209,7 +210,7 @@
 	\mode{ssb}{7060}{7200}
 \end{band}
 \begin{bandnotes}
-	\item[Prefered side band] LSB
+	\item[Preferred side band] LSB
 	\item[Emergency Frequency] 7110 kHz
 	\item[Activity Centers] \mbox{}
 	\begin{description}
@@ -258,7 +259,7 @@
 	\mode{ssb}{14101}{14350}
 \end{band}
 \begin{bandnotes}
-	\item[Prefered side band] LSB
+	\item[Preferred side band] USB
 	\item[Emergency] 14300 kHz
 	\item[Activity Centers] \mbox{}
 	\begin{description}
@@ -291,8 +292,8 @@
 	\mode{ssb}{18120}{18168}
 \end{band}
 \begin{bandnotes}
-	\item[Prefered side band] USB
-	\item[Emergency] 18.160 kHz
+	\item[Preferred side band] USB
+	\item[Emergency] 18160 kHz
 	\item[Activity Centers] \mbox{}
 	\begin{description}
 		\item[CW QRP] 18086 kHz
@@ -323,7 +324,7 @@
 	\mode{ssb}{21151}{21450}
 \end{band}
 \begin{bandnotes}
-	\item[Prefered side band] USB
+	\item[Preferred side band] USB
 	\item[Emergency] 21360 kHz
 	\item[Activity Centers] \mbox{}
 	\begin{description}
@@ -353,7 +354,7 @@
 	\mode{ssb}{24931}{24990}
 \end{band}
 \begin{bandnotes}
-	\item[Prefered side band] USB
+	\item[Preferred side band] USB
 	\item[Activity Centers] \mbox{}
 	\begin{description}
 		\item[CW QRP] 24906 kHz
@@ -398,7 +399,7 @@
 	\mode{rpt}{29620}{29700}
 \end{band}
 \begin{bandnotes}
-	\item[Prefered side band] USB
+	\item[Preferred side band] USB
 	\item[Activity Centers] \mbox{}
 	\begin{description}
 		\item[CW QRP] 28060 kHz
@@ -433,16 +434,16 @@
 	\mode{rpt}{50700}{50900}
 \end{band}
 \begin{bandnotes}
-	\item[Prefered side band] USB
+	\item[Preferred side band] USB
 	\item[Activity Centers] \mbox{}
 	\begin{description}
 		\item[CW Intercontinental] \mbox{} \\ 50.090 MHz
 		\item[Crossband] 50.285 MHz
 		\item[EME] 50.310–320 MHz
-		\item[Image] 50.550 kHz
+		\item[Image] 50.550 MHz
 		\item[MS] 50.320–380 MHz
 		\item[PSK] 50.305 MHz
-		\item[RTTY] 50.600 kHz
+		\item[RTTY] 50.600 MHz
 		\item[SSB Intercontinental] \mbox{} \\ 50.110 MHz
 		\item[SSB International] \mbox{} \\ 50.150 MHz
 		\item[SSTV] 50.510 MHz
@@ -470,7 +471,7 @@
 	\mode{rpt}{51200}{51400}
 \end{band}
 
-\addsec{144 MHz (2 m) / 1000 W (100 W)}
+\addsec{144 MHz (2 m) / 1000 W (50 W)}
 \begin{band}{144.000}{144.975}
 	\assignment{primary}{144.000}{144.975}
 	\bw{2700}{144.000}{144.025}
@@ -495,7 +496,7 @@
 \end{band}
 \begin{bandnotes}
 
-	\item[Prefered side band] USB
+	\item[Preferred side band] USB
 	\item[Emergency] \mbox{}
 	\begin{itemize}
 		\item 144.260 MHz USB
@@ -510,7 +511,7 @@
 	\item[Activity Centers] \mbox{}
 	\begin{description}
 		\item[ATV talk back] 144.750 MHz
-		\item[Data (RTTY, …)] 144.500 MHz
+		\item[Data (RTTY, …)] 144.600 MHz
 		\item[Image (SSTV, Fax, …)] \mbox{} \\ 144.500 MHz
 		\item[MS CW] 144.100 MHz
 		\item[MS SSB] 144.195–144.205 MHz
@@ -578,7 +579,7 @@
 	\mode{data}{432.500}{433.000}
 \end{band}
 \begin{bandnotes}
-	\item[Prefered side band] USB
+	\item[Preferred side band] USB
 	\item[Emergency] 434.000 MHz FM
 	\item[Calling frequencies] \mbox{}
 	\begin{description}

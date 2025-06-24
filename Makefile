@@ -30,9 +30,6 @@ tmp/%-a6.pdf: %.tex inlay.sty Makefile
 tmp/%-nup.pdf: tmp/%.pdf
 	pdfjam --vanilla --noautoscale true --nup 2x1 --landscape '--signature' 4 --twoside --shortedge -o $@ -- $< 3-
 
-tmp/%-a5.pdf: %.tex freitag.sty
-	$(build_cmd) -outdir=tmp -usepretex='\PassOptionsToPackage{a5}{freitag}' -jobname=$*-a5 $<
-
 %.pdf: tmp/%.pdf  tmp/%-nup.pdf
 	pdfjam --vanilla --rotateoversize true --paper a4paper -o $@ -- $< 1 tmp/$*-nup.pdf
 
