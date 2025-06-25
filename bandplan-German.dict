@@ -9,6 +9,7 @@
 \providetranslation{Data Modes}{Digitale Betriebsarten}
 \providetranslation{Data and Voice}{Daten und Sprache}
 \providetranslation{Digital Voice}{Digitale Sprache}
+\providetranslation{Emergency Frequencies}{Notruf-Frequenzen}
 \providetranslation{Emergency Frequency}{Notruf-Frequenz}
 \providetranslation{FM and Digital Voice}{FM und digitale Sprache}
 \providetranslation{Image}{Bildübertragung}
@@ -23,3 +24,5 @@
 \providetranslation{Satelite and Space}{Satelit and Weltraum}
 \providetranslation{Secondary}{Sekundär}
 \providetranslation{Single Side Band}{Einseitenband}
+\providetranslation{internet voice gateways}{Internet-Sprach-Gateways}
+\providetranslation{talk back}{Rückkanal}
