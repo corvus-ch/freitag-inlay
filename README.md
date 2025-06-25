@@ -14,6 +14,8 @@ Custom inlays inspired by the [Freitag F26 Agenda][f26].
 Besides the special format used for the [Freitag F26 Agenda][f26], each inlay is
 also available in **A5** and **A6** size.
 
+Available langauges are English and German.
+
 Download ready to use PDFs from [this projects release page][releases].
 
 ## How to use?
