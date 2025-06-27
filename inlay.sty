@@ -12,6 +12,9 @@
 % =======
 % Options
 % -------
+
+\newcommand{\inlay@pageformat}{undefined}
+
 \newif\if@optionlayout\@optionlayoutfalse
 \DeclareOption{layout}{\@optionlayouttrue}
 
@@ -28,6 +31,8 @@
 		twoside,
 		vmargin=5mm,
 	}{geometry}
+
+	\renewcommand{\inlay@pageformat}{f26}
 }
 
 \DeclareOption{a5}{\PassOptionsToPackage{
@@ -44,6 +49,8 @@
 	\ofoot*{}
 	\ifoot*{}
 	\cfoot*{}
+
+	\renewcommand{\inlay@pageformat}{a5}
 }
 
 \DeclareOption{a6}{\PassOptionsToPackage{
@@ -68,6 +75,17 @@
 
 	\KOMAoption{fontsize}{8pt}
 	\addtokomafont{section}{\Large}
+	\renewcommand{\inlay@pageformat}{a6}
+}
+
+\DeclareOption{en}{
+	\PassOptionsToPackage{english}{babel}
+	\PassOptionsToPackage{english}{translator}
+}
+
+\DeclareOption{de}{
+	\PassOptionsToPackage{ngerman}{babel}
+	\PassOptionsToPackage{ngerman}{translator}
 }
 
 \DeclareOption*{\PassOptionsToPackage{\CurrentOption}{geometry}}
@@ -78,6 +96,14 @@
 % ----------
 
 \RequirePackage{geometry}
+
+% ====
+% i18n
+% ----
+
+\RequirePackage{babel}
+\RequirePackage{translator}
+\usedictionary{inlay}
 
 % ===========
 % Page layout
@@ -176,8 +202,9 @@
 \addtokomafont{publishers}{\normalsize}
 \newcommand{\inlaytitlepage}[1]{
 	\begin{titlepage}
-		\subject{Freitag Agenda Inlay}
-		\title{#1}
+		\subject{\translate{Inlay Subject}}
+		\title{\translate{Inlay Title}}
+		\subtitle{\translate{Inlay Subtitle (\inlay@pageformat)}}
 		\author{Christian Häusler}
 		\date{\inlaySourceRevision}
 		\publishers{\inlaySourceURL}

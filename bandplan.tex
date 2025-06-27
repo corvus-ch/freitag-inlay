@@ -91,22 +91,26 @@
 \definecolor{cyan}{RGB}{42,161,152}
 \definecolor{green}{RGB}{133,153,0}
 
+\usedictionary{bandplan}
+\deftranslation[to=English]{Inlay Title}{Swiss Amateurradio Band Plan}
+\deftranslation[to=German]{Inlay Title}{Schweizer Amateurfunk Bandplan}
+
 \begin{document}
 \inlaytitlepage{Bandplan}
 
-\addsec{Bandplan Legend}
+\addsec{\translate{Bandplan Legend}}
 \noindent\begin{tikzpicture}[node distance=2em]
-	\node (modes) {\textbf{Modes}};
-	\legend[below=of modes.west, anchor=west]{cw}{CW}
-	\legend[below of=cw]{data}{Data Modes}
-	\legend[below of=data]{ssb}{Single Side Band}
-	\legend[below of=ssb]{voice}{FM and Digital Voice}
-	\legend[below of=voice]{all}{Data and Voice}
-	\legend[below of=all]{rpt}{Repeater Input and Output}
-	\legend[below of=rpt]{sat}{Satellite and Space}
-	\legend[below of=sat]{none}{Reserved for special use}
+	\node (modes) {\textbf{\translate{Modes}}};
+	\legend[below=of modes.west, anchor=west]{cw}{\translate{CW}}
+	\legend[below of=cw]{data}{\translate{Data Modes}}
+	\legend[below of=data]{ssb}{\translate{Single Side Band}}
+	\legend[below of=ssb]{voice}{\translate{FM and Digital Voice}}
+	\legend[below of=voice]{all}{\translate{Data and Voice}}
+	\legend[below of=all]{rpt}{\translate{Repeater Input and Output}}
+	\legend[below of=rpt]{sat}{\translate{Satelite and Space}}
+	\legend[below of=sat]{none}{\translate{Reserved for special use}}
 
-	\node[below=3em of none.south west, anchor=west] (bw) {\textbf{Bandwidths}};
+	\node[below=3em of none.south west, anchor=west] (bw) {\textbf{\translate{Bandwidths}}};
 	\legend[below=of bw.west, anchor=west]{20}{20 Hz}
 	\legend[below of=20]{200}{200 Hz}
 	\legend[below of=200]{500}{500 Hz}
@@ -116,9 +120,9 @@
 	\legend[below of=6000]{12k}{12 KHz}
 	\legend[below of=12k]{20k}{20 KHz}
 
-	\node[right=10em of bw.west, anchor=west] (alloc) {\textbf{Allocation}};
-	\legend[below=of alloc.west, anchor=west]{primary}{Primary}
-	\legend[below of=primary]{secondary}{Secondary}
+	\node[right=10em of bw.west, anchor=west] (alloc) {\textbf{\translate{Allocation}}};
+	\legend[below=of alloc.west, anchor=west]{primary}{\translate{Primary}}
+	\legend[below of=primary]{secondary}{\translate{Secondary}}
 \end{tikzpicture}
 
 \addsec{1.8 MHZ (160 m) / 1000 W (100 W)}
@@ -140,8 +144,11 @@
 	\mode{ssb}{1843}{2000}
 \end{band}
 \begin{bandnotes}
-	\item[Preferred side band] LSB
-	\item[CW QRP calling frequency] 1836 kHz
+	\item[\translate{Preferred side band}] LSB
+	\item[\translate{Activity Centers}] \mbox{}
+	\begin{description}
+		\item[CW QRP] 1836~kHz
+	\end{description}
 \end{bandnotes}
 
 \addsec{3.5 MHz (80 m) / 1000 W (100 W)}
@@ -162,15 +169,15 @@
 	\mode{ssb}{3620}{3800}
 \end{band}
 \begin{bandnotes}
-	\item[Preferred side band] LSB
-	\item[Emergency Frequency] 3760 kHz
-	\item[Activity Centers] \mbox{}
+	\item[\translate{Preferred side band}] LSB
+	\item[\translate{Emergency Frequency}] 3760~kHz
+	\item[\translate{Activity Centers}] \mbox{}
 	\begin{description}
-		\item[CW QRP] 3560 kHz
-		\item[CW QRS] 3555 kHz
-		\item[Digital Voice] 3630 kHz
-		\item[Image] 3735 kHz
-		\item[SSB QRP] 3690 kHz
+		\item[CW QRP] 3560~kHz
+		\item[CW QRS] 3555~kHz
+		\item[\translate{Digital Voice}] 3630~kHz
+		\item[\translate{Image}] 3735~kHz
+		\item[SSB QRP] 3690~kHz
 	\end{description}
 \end{bandnotes}
 
@@ -190,7 +197,7 @@
 	\mode{data}{5366}{5366.5}
 \end{band}
 \begin{bandnotes}
-	\item[Preferred side band] USB
+	\item[\translate{Preferred side band}] USB
 \end{bandnotes}
 
 \addsec{7 MHz (40 m) / 1000 W}
@@ -210,14 +217,14 @@
 	\mode{ssb}{7060}{7200}
 \end{band}
 \begin{bandnotes}
-	\item[Preferred side band] LSB
-	\item[Emergency Frequency] 7110 kHz
-	\item[Activity Centers] \mbox{}
+	\item[\translate{Preferred side band}] LSB
+	\item[\translate{Emergency Frequency}] 7110~kHz
+	\item[\translate{Activity Centers}] \mbox{}
 	\begin{description}
-		\item[CW QRP] 7030 kHz
-		\item[Digital Voice] 7070 kHz
-		\item[Image] 7165 kHz
-		\item[SSB QRP] 7090 kHz
+		\item[CW QRP] 7030~kHz
+		\item[\translate{Digital Voice}] 7070~kHz
+		\item[\translate{Image}] 7165~kHz
+		\item[SSB QRP] 7090~kHz
 	\end{description}
 \end{bandnotes}
 
@@ -234,10 +241,10 @@
 	\mode{data}{10130}{10150}
 \end{band}
 \begin{bandnotes}
-	\item[Emergency] 10.138 MHz USB
-	\item[Activity Centers] \mbox{}
+	\item[\translate{Emergency Frequency}] 10138 kHz USB
+	\item[\translate{Activity Centers}] \mbox{}
 	\begin{description}
-		\item[CW QRP] 10116 kHz
+		\item[CW QRP] 10116~kHz
 	\end{description}
 \end{bandnotes}
 
@@ -259,17 +266,17 @@
 	\mode{ssb}{14101}{14350}
 \end{band}
 \begin{bandnotes}
-	\item[Preferred side band] USB
-	\item[Emergency] 14300 kHz
-	\item[Activity Centers] \mbox{}
+	\item[\translate{Preferred side band}] USB
+	\item[\translate{Emergency Frequency}] 14300~kHz
+	\item[\translate{Activity Centers}] \mbox{}
 	\begin{description}
-		\item[CW QRS] 14055 kHz
-		\item[CW QRP] 14060 kHz
-		\item[Digital Voice] 14130 kHz
-		\item[Image] 14230 kHz
-		\item[SSB QRP] 14285 kHz
+		\item[CW QRS] 14055~kHz
+		\item[CW QRP] 14060~kHz
+		\item[\translate{Digital Voice}] 14130~kHz
+		\item[\translate{Image}] 14230~kHz
+		\item[SSB QRP] 14285~kHz
 	\end{description}
-	\item[Priority for DX-peditions] \mbox{} \\ 14195 ±5 kHz
+	\item[\translate{Priority for DX-peditions}] 14195~±5~kHz
 \end{bandnotes}
 
 \addsec{18 MHz (17 m) / 1000 W}
@@ -292,13 +299,13 @@
 	\mode{ssb}{18120}{18168}
 \end{band}
 \begin{bandnotes}
-	\item[Preferred side band] USB
-	\item[Emergency] 18160 kHz
-	\item[Activity Centers] \mbox{}
+	\item[\translate{Preferred side band}] USB
+	\item[\translate{Emergency Frequency}] 18160~kHz
+	\item[\translate{Activity Centers}] \mbox{}
 	\begin{description}
-		\item[CW QRP] 18086 kHz
-		\item[Digital Voice] 18150 kHz
-		\item[SSB QRP] 18130 kHz
+		\item[CW QRP] 18086~kHz
+		\item[\translate{Digital Voice}] 18150~kHz
+		\item[SSB QRP] 18130~kHz
 	\end{description}
 \end{bandnotes}
 
@@ -324,15 +331,15 @@
 	\mode{ssb}{21151}{21450}
 \end{band}
 \begin{bandnotes}
-	\item[Preferred side band] USB
-	\item[Emergency] 21360 kHz
-	\item[Activity Centers] \mbox{}
+	\item[\translate{Preferred side band}] USB
+	\item[\translate{Emergency Frequency}] 21360~kHz
+	\item[\translate{Activity Centers}] \mbox{}
 	\begin{description}
-		\item[CW QRP] 21060 kHz
-		\item[CW QRS] 21055 kHz
-		\item[Digital Voice] 21180 kHz
-		\item[Image] 21340 kHz
-		\item[SSB QRP] 21285 kHz
+		\item[CW QRP] 21060~kHz
+		\item[CW QRS] 21055~kHz
+		\item[\translate{Digital Voice}] 21180~kHz
+		\item[\translate{Image}] 21340~kHz
+		\item[SSB QRP] 21285~kHz
 	\end{description}
 \end{bandnotes}
 
@@ -354,12 +361,12 @@
 	\mode{ssb}{24931}{24990}
 \end{band}
 \begin{bandnotes}
-	\item[Preferred side band] USB
-	\item[Activity Centers] \mbox{}
+	\item[\translate{Preferred side band}] USB
+	\item[\translate{Activity Centers}] \mbox{}
 	\begin{description}
-		\item[CW QRP] 24906 kHz
-		\item[Digital Voice] 24960 kHz
-		\item[SSB QRP] 24950 kHz
+		\item[CW QRP] 24906~kHz
+		\item[\translate{Digital Voice}] 24960~kHz
+		\item[SSB QRP] 24950~kHz
 	\end{description}
 \end{bandnotes}
 
@@ -399,14 +406,14 @@
 	\mode{rpt}{29620}{29700}
 \end{band}
 \begin{bandnotes}
-	\item[Preferred side band] USB
-	\item[Activity Centers] \mbox{}
+	\item[\translate{Preferred side band}] USB
+	\item[\translate{Activity Centers}] \mbox{}
 	\begin{description}
-		\item[CW QRP] 28060 kHz
-		\item[CW QRS] 28055 kHz
-		\item[Digital Voice] 28330 kHz
-		\item[Image] 28680 kHz
-		\item[SSB QRP] 28360 kHz
+		\item[CW QRP] 28060~kHz
+		\item[CW QRS] 28055~kHz
+		\item[\translate{Digital Voice}] 28330~kHz
+		\item[\translate{Image}] 28680~kHz
+		\item[SSB QRP] 28360~kHz
 	\end{description}
 \end{bandnotes}
 
@@ -434,24 +441,24 @@
 	\mode{rpt}{50700}{50900}
 \end{band}
 \begin{bandnotes}
-	\item[Preferred side band] USB
-	\item[Activity Centers] \mbox{}
+	\item[\translate{Preferred side band}] USB
+	\item[\translate{Activity Centers}] \mbox{}
 	\begin{description}
-		\item[CW Intercontinental] \mbox{} \\ 50.090 MHz
-		\item[Crossband] 50.285 MHz
-		\item[EME] 50.310–320 MHz
-		\item[Image] 50.550 MHz
-		\item[MS] 50.320–380 MHz
-		\item[PSK] 50.305 MHz
-		\item[RTTY] 50.600 MHz
-		\item[SSB Intercontinental] \mbox{} \\ 50.110 MHz
-		\item[SSB International] \mbox{} \\ 50.150 MHz
-		\item[SSTV] 50.510 MHz
+		\item[CW \translate{Intercontinental}] 50.090~MHz
+		\item[Crossband] 50.285~MHz
+		\item[EME] 50.310–320~MHz
+		\item[\translate{Image}] 50.550~MHz
+		\item[MS] 50.320–380~MHz
+		\item[PSK] 50.305~MHz
+		\item[RTTY] 50.600~MHz
+		\item[SSB \translate{Intercontinental}] 50.110~MHz
+		\item[SSB \translate{International}] 50.150~MHz
+		\item[SSTV] 50.510~MHz
 	\end{description}
-	\item[Calling frequencies] \mbox{}
+	\item[\translate{Calling Frequencies}] \mbox{}
 	\begin{description}
-		\item[DV] 50.630 MHz
-		\item[FM] 51.510 MHz
+		\item[DV] 50.630~MHz
+		\item[FM] 51.510~MHz
 	\end{description}
 \end{bandnotes}
 
@@ -495,28 +502,27 @@
 	\mode{data}{144.491}{144.975}
 \end{band}
 \begin{bandnotes}
-
-	\item[Preferred side band] USB
-	\item[Emergency] \mbox{}
+	\item[\translate{Preferred side band}] USB
+	\item[\translate{Emergency Frequencies}] \mbox{}
 	\begin{itemize}
 		\item 144.260 MHz USB
 		\item 145.500 MHz FM
 	\end{itemize}
-	\item[Calling frequencies] \mbox{}
+	\item[\translate{Calling Frequencies}] \mbox{}
 	\begin{description}
-		\item[DV] 145.375 MHz
-		\item[FM] 145.500 MHz
-		\item[CW] 144.050 MHz
+		\item[DV] 145.375~MHz
+		\item[FM] 145.500~MHz
+		\item[CW] 144.050~MHz
 	\end{description}
-	\item[Activity Centers] \mbox{}
+	\item[\translate{Activity Centers}] \mbox{}
 	\begin{description}
-		\item[ATV talk back] 144.750 MHz
-		\item[Data (RTTY, …)] 144.600 MHz
-		\item[Image (SSTV, Fax, …)] \mbox{} \\ 144.500 MHz
-		\item[MS CW] 144.100 MHz
-		\item[MS SSB] 144.195–144.205 MHz
+		\item[ATV \translate{talk back}] 144.750~MHz
+		\item[\translate{Data Modes}] 144.600~MHz
+		\item[\translate{Image}] 144.500~MHz
+		\item[MS CW] 144.100~MHz
+		\item[MS SSB] 144.195–144.205~MHz
 	\end{description}
-	\item[APRS] 144.800 MHz
+	\item[APRS] 144.800~MHz
 \end{bandnotes}
 
 \pagebreak
@@ -539,19 +545,19 @@
 	\mode{sat}{145.794}{146.000}
 \end{band}
 \begin{bandnotes}
-	\item[DV internet voice gateways] \mbox{}
+	\item[DV \translate{internet voice gateways}] \mbox{}
 	\begin{itemize}
-		\item 144.8125 MHz
-		\item 144.8250 MHz
-		\item 144.8375 MHz
-		\item 144.8500 MHz
-		\item 144.8625 MHz
+		\item 144.8125~MHz
+		\item 144.8250~MHz
+		\item 144.8375~MHz
+		\item 144.8500~MHz
+		\item 144.8625~MHz
 	\end{itemize}
-	\item[FM internet voice gateways] \mbox{}
+	\item[FM \translate{internet voice gateways}] \mbox{}
 	\begin{itemize}
-		\item 145.2375 MHz
-		\item 145.2875 MHz
-		\item 145.3375 MHz
+		\item 145.2375~MHz
+		\item 145.2875~MHz
+		\item 145.3375~MHz
 	\end{itemize}
 \end{bandnotes}
 
@@ -579,22 +585,22 @@
 	\mode{data}{432.500}{433.000}
 \end{band}
 \begin{bandnotes}
-	\item[Preferred side band] USB
-	\item[Emergency] 434.000 MHz FM
-	\item[Calling frequencies] \mbox{}
+	\item[\translate{Preferred side band}] USB
+	\item[\translate{Emergency Frequency}] 434.000 MHz FM
+	\item[\translate{Calling Frequencies}] \mbox{}
 	\begin{description}
-		\item[CW] 432.050 MHz
-		\item[DV] 433.450 MHz
-		\item[FM] 433.500 MHz
-		\item[SSB] 432.200 MHz
+		\item[CW] 432.050~MHz
+		\item[DV] 433.450~MHz
+		\item[FM] 433.500~MHz
+		\item[SSB] 432.200~MHz
 	\end{description}
-	\item[Activity Centers] \mbox{}
+	\item[\translate{Activity Centers}] \mbox{}
 	\begin{description}
-		\item[MS] 432.370 MHz
-		\item[Microwave talkback] \mbox{} \\ 432.350 MHz
-		\item[SSTV] 433.400 MHz
+		\item[MS] 432.370~MHz
+		\item[\translate{Microwave} \translate{talk back}] 432.350~MHz
+		\item[SSTV] 433.400~MHz
 	\end{description}
-	\item[APRS] 432.500 MHz
+	\item[APRS] 432.500~MHz
 \end{bandnotes}
 
 \pagebreak

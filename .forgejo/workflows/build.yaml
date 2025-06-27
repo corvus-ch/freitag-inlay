@@ -16,6 +16,7 @@ jobs:
       matrix:
         document: [bandplan, dotted, gridded, sota-log]
         format: [a5, a6, f26]
+        language: [de, en]
 
     steps:
       - name: Set up Git repository
@@ -27,20 +28,20 @@ jobs:
         run: ./update-git-info.sh
 
       - name: Compile document
-        run: make ${{ matrix.document }}-${{ matrix.format }}-booklet.pdf
+        run: make ${{ matrix.document }}-${{ matrix.format }}-${{ matrix.language }}-booklet.pdf
 
       - name: Upload document
         uses: https://code.forgejo.org/forgejo/upload-artifact@v4
         with:
-          name: ${{ matrix.document }}-${{ matrix.format }}.pdf
-          path: ${{ matrix.document }}-${{ matrix.format }}.pdf
+          name: ${{ matrix.document }}-${{ matrix.format }}-${{ matrix.language }}.pdf
+          path: ${{ matrix.document }}-${{ matrix.format }}-${{ matrix.language }}.pdf
           compression-level: 0
 
       - name: Upload booklet
         uses: https://code.forgejo.org/forgejo/upload-artifact@v4
         with:
-          name: ${{ matrix.document }}-${{ matrix.format }}-booklet.pdf
-          path: ${{ matrix.document }}-${{ matrix.format }}-booklet.pdf
+          name: ${{ matrix.document }}-${{ matrix.format }}-${{ matrix.language }}-booklet.pdf
+          path: ${{ matrix.document }}-${{ matrix.format }}-${{ matrix.language }}-booklet.pdf
           compression-level: 0
 
   release:
